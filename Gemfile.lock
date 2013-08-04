@@ -1,0 +1,64 @@
+GIT
+  remote: git://github.com/tka/rack-coffee
+  revision: a1cef1b2b91b0d92c3184adbe80c6825efea946a
+  specs:
+    rack-coffee (1.0.0)
+      coffee-script
+      rack
+
+GIT
+  remote: git://github.com/tka/serve.git
+  revision: ed49d62b64b48acedc0033c1d96d839c8f9879e7
+  specs:
+    serve (1.5.1)
+      activesupport (~> 3.2.12)
+      i18n
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+      tilt (~> 1.3.3)
+      tzinfo
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.2.14)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    chunky_png (1.2.8)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    daemons (1.1.9)
+    eventmachine (1.0.3)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    fssm (0.2.10)
+    haml (4.0.3)
+      tilt
+    i18n (0.6.4)
+    multi_json (1.7.7)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    sass (3.2.10)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
+    tilt (1.3.7)
+    tzinfo (1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass
+  haml
+  rack-coffee!
+  serve!
+  thin
