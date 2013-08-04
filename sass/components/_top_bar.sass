@@ -1,0 +1,91 @@
+.top-bar
+  padding: 0 31px
+  .title-area
+    .name
+      h1
+        a
+          margin: 15px 0
+          text-indent: -999em
+          width: 124px
+          height: 28px
+          background: url('../images/logo-white.png') no-repeat
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/logo-white-hd.png')
+            background-size: 123px 28px
+
+  .top-bar-section
+    ul
+      margin: 13px 0 0
+      > li
+        margin: 0 0 0 5px
+        a
+          background-color: transparent
+          width: 33px
+          height: 33px
+          padding: 0
+          background-repeat: no-repeat
+          opacity: .8
+          +transition(.2s opacity)
+          &:hover
+            opacity: 1
+        &.about-link a
+          background-image: url('../images/icon-about.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-about-hd.png')
+            background-size: 33px 33px
+        &.twitter-link a
+          background-image: url('../images/icon-twitter.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-twitter-hd.png')
+            background-size: 33px 33px
+        &.paris-link a
+          background-image: url('../images/icon-paris.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-paris-hd.png')
+            background-size: 33px 33px
+        &.london-link a
+          background-image: url('../images/icon-london.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-london-hd.png')
+            background-size: 33px 33px
+        &.san-francisco-link a
+          background-image: url('../images/icon-san-francisco.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-san-francisco-hd.png')
+            background-size: 33px 33px
+        &.local-link a
+          background-image: url('../images/icon-local.png')
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+            background-image: url('../images/icon-local-hd.png')
+            background-size: 33px 33px
+      &.timezones
+        margin-right: 38px
+        > li
+          a
+            opacity: .3
+            &:hover
+              opacity: 1
+          &.current
+            a
+              opacity: 1
+
+@media (max-width: 768px)
+  .top-bar
+    padding: 0 0.9375em
+
+@media (max-width: 550px)
+  .tooltip
+    display: none !important
+  .top-bar
+    .top-bar-section
+      ul.timezones
+        width: 41px
+        margin-top: 8px
+        > li
+          margin: 5px
+          display: none
+          &.current
+            display: block
+        &:hover
+          > li
+            display: block

@@ -1,0 +1,75 @@
+!!!
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7] <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+/[if IE 7] <html class="no-js lt-ie9 lt-ie8" lang="en">
+/[if IE 8] <html class="no-js lt-ie9" lang="en">
+/ [if gt IE 8]><!
+%html.no-js{:lang => "en"}
+  / <![endif]
+  %head
+    %meta{:charset => "utf-8"}/
+    / Set the viewport width to device width for mobile
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    %title Welcome to Foundation
+    / Included CSS Files
+    %link{:href => "stylesheets/app.css", :rel => "stylesheet"}/
+    %script{:src => "javascripts/vendor/modernizr.js"}
+    / IE Fix for HTML5 Tags
+    /[if lt IE 9]
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    = render :partial => 'nav'
+    %section.watch#weekender
+      = render :partial => 'watches/weekender'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 The Weekender
+            %ul.info-list
+              %li
+                %span.key Maker
+                %span.value Timex
+              %li
+                %span.key Posted
+                %span.value Aug. 3rd, 20113
+
+    %section#about
+      %hr.dots
+      .row
+        .large-8.large-centered.small-12.columns
+          %h2 About Wrist
+          %p Wrist is a bi-weekly illustrative exercise to explore typography, colors, clock mechanics, and everything else that goes into watch design. Starting with one of my watches, I will be illustrating existing watches as well as exploring new watch designs. I sadly only own two watches, so I’ll quickly be moving to the latter.
+
+          %p
+            I’m a
+            %a{:href => 'http://dribbble.com/mattsjohnston', :target => '_blank'} designer
+            and
+            %a{:href => 'http://github.com/mattsjohnston', :target => '_blank'} developer
+            living in South Bay with my wonderful wife, Natalie, and working in San Francisco on&nbsp;
+            %a{:href => 'https://boatbound.co', :target => '_blank'}> Boatbound
+            , a peer-to-peer boat sharing service.
+
+    %footer
+      .row
+        .large-6.columns
+          %p.copyright Designs & Code &copy; 2013 Matt Johnston
+        .large-6.columns
+          %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/wristfeed"} Follow @wristfeed
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          %a.twitter-share-button{"data-url" => "http://www.wrist.im", "data-via" => "wristfeed", :href => "https://twitter.com/share"} Tweet
+          :javascript
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+    / Included JS Files (Uncompressed)
+    %script{:src => "javascripts/vendor/jquery-1.10.2.js"}
+    %script{:src => "javascripts/vendor/jquery.svg.js"}
+    %script{:src => "javascripts/vendor/jquery.svgdom.js"}
+
+    %script{:src => "javascripts/vendor/foundation/foundation.js"}
+    %script{:src => "javascripts/vendor/foundation/foundation.tooltips.js"}
+    %script{:src => "javascripts/vendor/jquery.scrollTo-1.4.3.1.js"}
+
+    %script{:src => "javascripts/application.js"}
+
+    %link{:href => "http://fonts.googleapis.com/css?family=Cabin:400,500,600,700", :rel => "stylesheet", :type => "text/css"}/

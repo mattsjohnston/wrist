@@ -1,0 +1,21 @@
+.fixed
+  %nav.top-bar
+    %ul.title-area
+      %li.name
+        %h1
+          %a{:href => '#'} Wrist
+    %section.top-bar-section
+      %ul.right
+        %li.twitter-link
+          %a{:href => 'https://twitter.com/wristfeed', :target => '_blank'}
+        %li.about-link.al
+          %a{:href => '#about'}
+      %ul.timezones.right
+        %li.current.local-link
+          %a.has-tip{:title => "Local Time", :data => {:tooltip => 'local'}, :href => '#local'}
+        %li.san-francisco-link
+          %a.has-tip{:title => "Go to San Francisco", :data => {:tooltip => 'sanfrancisco'}, :href => '#sanfrancisco'}
+        %li.london-link
+          %a.has-tip{:title => "Go to London", :data => {:tooltip => 'london'}, :href => '#london'}
+        %li.paris-link
+          %a.has-tip{:title => "Go to Paris", :data => {:tooltip => 'paris'}, :href => '#paris'}
