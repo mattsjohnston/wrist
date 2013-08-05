@@ -25,6 +25,7 @@ root = ::File.dirname(__FILE__)
 require 'sass'
 require 'sass/plugin/rack'
 require 'compass'
+require 'zurb-foundation'
 
 Compass.add_project_configuration( Compass.detect_configuration_file(root) )
 Compass.configure_sass_plugin!
