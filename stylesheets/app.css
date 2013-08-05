@@ -6008,25 +6008,31 @@ p {
 @media (max-width: 550px) {
   /* line 77, ../sass/components/_top_bar.sass */
   .tooltip {
-    display: none !important;
+    margin-left: -999em;
   }
 
   /* line 81, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones {
-    width: 41px;
-    margin-top: 8px;
+    padding: 8px 4px;
+    width: 55px;
+    margin-top: 2px;
   }
-  /* line 84, ../sass/components/_top_bar.sass */
+  /* line 85, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones > li {
-    margin: 5px;
+    margin: 5px 7px 0;
     display: none;
   }
-  /* line 87, ../sass/components/_top_bar.sass */
+  /* line 88, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones > li.current {
     display: block;
   }
   /* line 90, ../sass/components/_top_bar.sass */
+  .top-bar .top-bar-section ul.timezones:hover {
+    background-color: #333d4f;
+  }
+  /* line 92, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones:hover > li {
+    margin-bottom: 5px;
     display: block;
   }
 }
