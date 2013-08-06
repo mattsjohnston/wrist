@@ -5915,122 +5915,123 @@ p {
 /* line 29, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li a:hover {
   opacity: 1;
+  background-color: transparent;
 }
-/* line 31, ../sass/components/_top_bar.sass */
+/* line 32, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.about-link a {
   background-image: url("../images/icon-about.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 31, ../sass/components/_top_bar.sass */
+  /* line 32, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.about-link a {
     background-image: url("../images/icon-about-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 36, ../sass/components/_top_bar.sass */
+/* line 37, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.twitter-link a {
   background-image: url("../images/icon-twitter.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 36, ../sass/components/_top_bar.sass */
+  /* line 37, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.twitter-link a {
     background-image: url("../images/icon-twitter-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 41, ../sass/components/_top_bar.sass */
+/* line 42, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.paris-link a {
   background-image: url("../images/icon-paris.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 41, ../sass/components/_top_bar.sass */
+  /* line 42, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.paris-link a {
     background-image: url("../images/icon-paris-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 46, ../sass/components/_top_bar.sass */
+/* line 47, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.london-link a {
   background-image: url("../images/icon-london.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 46, ../sass/components/_top_bar.sass */
+  /* line 47, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.london-link a {
     background-image: url("../images/icon-london-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 51, ../sass/components/_top_bar.sass */
+/* line 52, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.san-francisco-link a {
   background-image: url("../images/icon-san-francisco.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 51, ../sass/components/_top_bar.sass */
+  /* line 52, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.san-francisco-link a {
     background-image: url("../images/icon-san-francisco-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 56, ../sass/components/_top_bar.sass */
+/* line 57, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul > li.local-link a {
   background-image: url("../images/icon-local.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 56, ../sass/components/_top_bar.sass */
+  /* line 57, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul > li.local-link a {
     background-image: url("../images/icon-local-hd.png");
     background-size: 33px 33px;
   }
 }
-/* line 61, ../sass/components/_top_bar.sass */
+/* line 62, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul.timezones {
   margin-right: 38px;
 }
-/* line 64, ../sass/components/_top_bar.sass */
+/* line 65, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul.timezones > li a {
   opacity: 0.3;
 }
-/* line 66, ../sass/components/_top_bar.sass */
+/* line 67, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul.timezones > li a:hover {
   opacity: 1;
 }
-/* line 69, ../sass/components/_top_bar.sass */
+/* line 70, ../sass/components/_top_bar.sass */
 .top-bar .top-bar-section ul.timezones > li.current a {
   opacity: 1;
 }
 
 @media (max-width: 768px) {
-  /* line 73, ../sass/components/_top_bar.sass */
+  /* line 74, ../sass/components/_top_bar.sass */
   .top-bar {
     padding: 0 0.9375em;
   }
 }
 @media (max-width: 550px) {
-  /* line 77, ../sass/components/_top_bar.sass */
+  /* line 78, ../sass/components/_top_bar.sass */
   .tooltip {
     margin-left: -999em;
   }
 
-  /* line 81, ../sass/components/_top_bar.sass */
+  /* line 82, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones {
     padding: 8px 4px;
     width: 55px;
     margin-top: 2px;
   }
-  /* line 85, ../sass/components/_top_bar.sass */
+  /* line 86, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones > li {
     margin: 5px 7px 0;
     display: none;
   }
-  /* line 88, ../sass/components/_top_bar.sass */
+  /* line 89, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones > li.current {
     display: block;
   }
-  /* line 90, ../sass/components/_top_bar.sass */
+  /* line 91, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones:hover {
     background-color: #333d4f;
   }
-  /* line 92, ../sass/components/_top_bar.sass */
+  /* line 93, ../sass/components/_top_bar.sass */
   .top-bar .top-bar-section ul.timezones:hover > li {
     margin-bottom: 5px;
     display: block;
