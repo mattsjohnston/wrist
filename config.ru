@@ -43,6 +43,15 @@ use Rack::Coffee, {
   :cache_compile => true
 }
 
+require 'haml'
+class Haml::Engine
+  alias old_initialize initialize
+  def initialize(lines, options)
+    options.update(:format => :xhtml)
+    old_initialize(lines, options)
+  end
+end
+
 # Rack Application
 if ENV['SERVER_SOFTWARE'] =~ /passenger/i
   # Passenger only needs the adapter
