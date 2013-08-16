@@ -27,6 +27,19 @@
       ga('send', 'pageview');
   %body
     = render :partial => 'nav'
+    %section.watch#no1
+      = render :partial => 'watches/no1'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 No. 1
+            %ul.info-list
+              %li
+                %span.key Maker
+                %a.value{:href => 'http://www.formuswithlove.se/', :target => '_blank'} Form Us With Love
+              %li
+                %span.key Posted
+                %span.value Aug. 17rd, 20113
     %section.watch#weekender
       = render :partial => 'watches/weekender'
       .watch-info
@@ -36,7 +49,7 @@
             %ul.info-list
               %li
                 %span.key Maker
-                %span.value Timex
+                %a.value{:href => 'http://www.timex.com/watches/timex-weekender-slip-thru-t2p1439j', :target => '_blank'} Timex
               %li
                 %span.key Posted
                 %span.value Aug. 3rd, 20113

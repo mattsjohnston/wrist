@@ -2,14 +2,16 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   $(function() {
-    var offsets;
+    var offsets, watches;
     $(document).foundation();
     if (Modernizr.is_mobile) {
       defer(function() {
         return window.scrollTo(0, 1);
       });
     }
-    window.weekender = $('#weekender .svg-main').clocker();
+    watches = {};
+    watches.weekender = $('#weekender .svg-main').clocker();
+    watches.no1 = $('#no1 .svg-main').clocker();
     offsets = {
       local: false,
       london: 1,
@@ -23,7 +25,9 @@
       $el.parents('.timezones').find('li').removeClass('current');
       $el.parent().addClass('current');
       city = $el.attr('href').split('#')[1];
-      return weekender.setOffset(offsets[city]);
+      return $.each(watches, function(i, watch) {
+        return watch.setOffset(offsets[city]);
+      });
     });
     return $('.al').click(function(e) {
       var anchor;

@@ -3,7 +3,10 @@ $ ->
   if Modernizr.is_mobile
     defer -> window.scrollTo(0, 1)
 
-  window.weekender = $('#weekender .svg-main').clocker()
+  watches = {}
+  watches.weekender = $('#weekender .svg-main').clocker()
+  watches.no1 = $('#no1 .svg-main').clocker()
+
   offsets =
     local: false
     london: 1
@@ -16,7 +19,7 @@ $ ->
     $el.parents('.timezones').find('li').removeClass('current')
     $el.parent().addClass('current')
     city = $el.attr('href').split('#')[1]
-    weekender.setOffset offsets[city]
+    $.each watches, (i, watch) -> watch.setOffset offsets[city]
 
   $('.al').click (e) ->
     e.preventDefault
