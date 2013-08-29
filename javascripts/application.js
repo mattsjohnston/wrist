@@ -2,13 +2,33 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   $(function() {
-    var offsets, watches;
+    var $signupForm, apiKey, mcApiBase, offsets, watches;
     $(document).foundation();
     if (Modernizr.is_mobile) {
       defer(function() {
         return window.scrollTo(0, 1);
       });
     }
+    mcApiBase = 'https://us2.api.mailchimp.com/2.0/';
+    apiKey = '3bedf01373aae0427b97f62634f70afb-us2';
+    $signupForm = $('#signup-form');
+    $signupForm.find('input').focus(function(e) {
+      $signupForm.addClass('focusing');
+      return $signupForm.find('button').html('Sign me up!');
+    });
+    $signupForm.find('input').blur(function(e) {
+      return $signupForm.removeClass('focusing');
+    });
+    $signupForm.submit(function(e) {
+      e.preventDefault();
+      return $.getJSON(this.action + "?callback=?", $(this).serialize(), function(data) {
+        if (data.Status === 400) {
+          return alert("Error: " + data.Message);
+        } else {
+          return $signupForm.parent().addClass('submitted');
+        }
+      });
+    });
     watches = {};
     watches.weekender = $('#weekender .svg-main').clocker();
     watches.no1 = $('#no1 .svg-main').clocker();

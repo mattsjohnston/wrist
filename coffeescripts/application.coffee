@@ -3,6 +3,23 @@ $ ->
   if Modernizr.is_mobile
     defer -> window.scrollTo(0, 1)
 
+  # Signup form focus animation trigger
+  mcApiBase = 'https://us2.api.mailchimp.com/2.0/'
+  apiKey = '3bedf01373aae0427b97f62634f70afb-us2'
+  $signupForm = $('#signup-form')
+  $signupForm.find('input').focus (e) ->
+    $signupForm.addClass 'focusing'
+    $signupForm.find('button').html 'Sign me up!'
+  $signupForm.find('input').blur (e) ->
+    $signupForm.removeClass 'focusing'
+  $signupForm.submit (e) ->
+    e.preventDefault()
+    $.getJSON @action + "?callback=?", $(this).serialize(), (data) ->
+      if data.Status is 400
+        alert "Error: " + data.Message
+      else # 200
+        $signupForm.parent().addClass 'submitted'
+
   watches = {}
   watches.weekender = $('#weekender .svg-main').clocker()
   watches.no1 = $('#no1 .svg-main').clocker()
