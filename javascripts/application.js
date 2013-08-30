@@ -95,17 +95,18 @@
         var settings,
           _this = this;
         settings = {
-          hourHand: '.hour-hand',
-          minuteHand: '.minute-hand',
-          secondHand: '.second-hand'
+          dayIndicator: '.day-indicator',
+          hourIndicator: '.hour-indicator',
+          minuteIndicator: '.minute-indicator',
+          secondIndicator: '.second-indicator'
         };
         settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
           var $el;
           $el = $(el);
-          _this.$hourHand = $el.find(settings.hourHand);
-          _this.$minuteHand = $el.find(settings.minuteHand);
-          _this.$secondHand = $el.find(settings.secondHand);
+          _this.$hourIndicator = $el.find(settings.hourIndicator);
+          _this.$minuteIndicator = $el.find(settings.minuteIndicator);
+          _this.$secondIndicator = $el.find(settings.secondIndicator);
           return _this.startAnimation(false);
         });
       };
@@ -126,18 +127,18 @@
         clearTimeout(this.updateTimer);
         this.isAnimatingHands = false;
         if (longTransition) {
-          this.$hourHand.add(this.$minuteHand).addClass('long-transition');
+          this.$hourIndicator.add(this.$minuteIndicator).addClass('long-transition');
         }
         defer(function() {
           _this.updateTime();
           return _this.isAnimatingHands = true;
         });
         events = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend';
-        this.$minuteHand.unbind(events);
-        return this.$minuteHand.bind(events, function() {
+        this.$minuteIndicator.unbind(events);
+        return this.$minuteIndicator.bind(events, function() {
           _this.isAnimatingHands = false;
-          _this.$hourHand.add(_this.$minuteHand).removeClass('long-transition');
-          return _this.$minuteHand.unbind(events);
+          _this.$hourIndicator.add(_this.$minuteIndicator).removeClass('long-transition');
+          return _this.$minuteIndicator.unbind(events);
         });
       };
 
@@ -146,27 +147,27 @@
           _this = this;
         time = this.getTime();
         $.each(time, function(key, val) {
-          var $hand, degree;
-          $hand = _this["$" + key + "Hand"];
+          var $indicator, degree;
+          $indicator = _this["$" + key + "Indicator"];
           degree = val.exactDeg || val.deg;
-          if (!_this.isAnimatingHands || key === 'second') {
+          if ($indicator && (!_this.isAnimatingHands || key === 'second')) {
             if (degree > 20 && degree < 30) {
               _this["" + key + "Loop"] = false;
             }
             if (degree > 0 && degree < 20 && !_this["" + key + "Loop"]) {
               _this["" + key + "Loop"] = degree;
-              $hand.addClass('no-transition');
+              $indicator.addClass('no-transition');
               return defer(function() {
-                _this.updateHand($hand, 0);
+                _this.updateIndicator($indicator, 0);
                 return defer(function() {
-                  $hand.removeClass('no-transition');
+                  $indicator.removeClass('no-transition');
                   return defer(function() {
-                    return _this.updateHand($hand, degree);
+                    return _this.updateIndicator($indicator, degree);
                   });
                 });
               });
             } else {
-              return _this.updateHand($hand, degree);
+              return _this.updateIndicator($indicator, degree);
             }
           }
         });
@@ -175,17 +176,18 @@
         }), 200);
       };
 
-      Clocker.prototype.updateHand = function($hand, deg) {
-        return $hand.css(this.prefixVendor('transform', "rotate(" + deg + "deg)"));
+      Clocker.prototype.updateIndicator = function($indicator, deg) {
+        return $indicator.css(this.prefixVendor('transform', "rotate(" + deg + "deg)"));
       };
 
       Clocker.prototype.getTime = function() {
-        var exactH, exactM, exactS, h, m, mil, now, s, time, utc;
+        var d, exactH, exactM, exactS, h, m, mil, now, s, time, utc;
         now = new Date();
         if (this.offsetTimezone !== false) {
           utc = now.getTime() + now.getTimezoneOffset() * 60000;
           now = new Date(utc + 3600000 * this.offsetTimezone);
         }
+        d = now.getDate();
         h = now.getHours();
         m = now.getMinutes();
         s = now.getSeconds();
@@ -195,6 +197,10 @@
         exactH = h + exactM / 60;
         exactM = exactM + h * 60;
         return time = {
+          day: {
+            val: d,
+            deg: this.valToDeg(d, 31)
+          },
           hour: {
             val: h,
             deg: this.valToDeg(h, 12),

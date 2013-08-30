@@ -61,18 +61,19 @@ $ ->
 
     init: ->
       settings =
-        hourHand: '.hour-hand'
-        minuteHand: '.minute-hand'
-        secondHand: '.second-hand'
+        dayIndicator: '.day-indicator'
+        hourIndicator: '.hour-indicator'
+        minuteIndicator: '.minute-indicator'
+        secondIndicator: '.second-indicator'
 
       # Merge default settings with options.
       settings = $.extend settings, @options
 
       @elements.each (i, el) =>
         $el = $(el)
-        @$hourHand = $el.find(settings.hourHand)
-        @$minuteHand = $el.find(settings.minuteHand)
-        @$secondHand = $el.find(settings.secondHand)
+        @$hourIndicator = $el.find(settings.hourIndicator)
+        @$minuteIndicator = $el.find(settings.minuteIndicator)
+        @$secondIndicator = $el.find(settings.secondIndicator)
         @startAnimation(false)
 
     setOffset: (offset) =>
@@ -83,42 +84,42 @@ $ ->
     startAnimation: (longTransition = true) =>
       clearTimeout @updateTimer
       @isAnimatingHands = false
-      @$hourHand.add(@$minuteHand).addClass('long-transition') if longTransition
+      @$hourIndicator.add(@$minuteIndicator).addClass('long-transition') if longTransition
       defer =>
         @updateTime()
         @isAnimatingHands = true
       events = 'webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend'
-      @$minuteHand.unbind events
-      @$minuteHand.bind events, =>
+      @$minuteIndicator.unbind events
+      @$minuteIndicator.bind events, =>
         @isAnimatingHands = false
-        @$hourHand.add(@$minuteHand).removeClass('long-transition')
-        @$minuteHand.unbind events
+        @$hourIndicator.add(@$minuteIndicator).removeClass('long-transition')
+        @$minuteIndicator.unbind events
 
     updateTime: =>
       time = @getTime()
       $.each time, (key, val) =>
-        $hand = @["$#{key}Hand"]
+        $indicator = @["$#{key}Indicator"]
         degree = val.exactDeg || val.deg
-        if !@isAnimatingHands || key == 'second'
+        if $indicator && (!@isAnimatingHands || key == 'second')
           if degree > 20 && degree < 30
             @["#{key}Loop"] = false
           if degree > 0 && degree < 20 && !@["#{key}Loop"]
             @["#{key}Loop"] = degree
-            $hand.addClass('no-transition')
+            $indicator.addClass('no-transition')
             defer =>
-              @updateHand($hand, 0)
+              @updateIndicator($indicator, 0)
               defer =>
-                $hand.removeClass 'no-transition'
-                defer => @updateHand($hand, degree)
+                $indicator.removeClass 'no-transition'
+                defer => @updateIndicator($indicator, degree)
           else
-            @updateHand($hand, degree)
+            @updateIndicator($indicator, degree)
 
       @updateTimer = setTimeout (=>
         @updateTime()
       ), 200
 
-    updateHand: ($hand, deg) ->
-      $hand.css @prefixVendor('transform', "rotate(#{deg}deg)")
+    updateIndicator: ($indicator, deg) ->
+      $indicator.css @prefixVendor('transform', "rotate(#{deg}deg)")
 
     getTime: ->
       now = new Date()
@@ -127,6 +128,7 @@ $ ->
         utc = now.getTime() + now.getTimezoneOffset() * 60000
         now = new Date(utc + 3600000 * @offsetTimezone)
 
+      d = now.getDate()
       h = now.getHours()
       m = now.getMinutes()
       s = now.getSeconds()
@@ -139,6 +141,9 @@ $ ->
       exactM = exactM + h*60
 
       time =
+        day:
+            val: d
+            deg: @valToDeg(d, 31)
         hour:
           val: h
           deg: @valToDeg(h, 12)
