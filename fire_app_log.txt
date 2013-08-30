@@ -415,3 +415,23 @@ Load paths:
 2013-08-29 09:44:35 overwrite stylesheets/app.css 
 2013-08-29 09:44:38 overwrite stylesheets/app.css 
 2013-08-29 09:45:00 overwrite stylesheets/app.css 
+2013-08-29 18:25:30     error sass/app.sass (Line 19: File to import not found or unreadable: watches/bn0032.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_0.12/compass-0.12.2/frameworks/compass/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/compass-960-plugin-f4bfe8555a7d2cae09bc/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/heygrady-compass-html5-boilerplate-4cc8815/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/compass-h5bp/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/thomas-mcdonald-bootstrap-sass-2.1.0.1/vendor/assets/stylesheets
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/susy-1.0.1/sass
+  /Applications/Fire.app/Contents/Resources/lib/ruby/compass_extensions/zurb-foundation-4.1.5/scss
+  Compass::SpriteImporter)
+2013-08-29 18:25:30 overwrite stylesheets/app.css 
+2013-08-29 18:25:41 overwrite stylesheets/app.css 
+2013-08-29 18:25:51 overwrite stylesheets/app.css 
+2013-08-29 18:26:23 overwrite stylesheets/app.css 
+2013-08-29 18:40:28 overwrite javascripts/application.js
+2013-08-29 18:40:50 overwrite stylesheets/app.css 
+2013-08-29 19:08:47 overwrite stylesheets/app.css 
+2013-08-30 08:51:55 overwrite stylesheets/app.css 

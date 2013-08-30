@@ -6507,3 +6507,16 @@ footer .twitter-follow-button, footer .twitter-share-button {
   -o-transform-origin: 200px 300px;
   transform-origin: 200px 300px;
 }
+
+/* line 1, ../sass/watches/_bn0032.sass */
+#bn0032 {
+  background-color: #6fceea;
+}
+/* line 4, ../sass/watches/_bn0032.sass */
+#bn0032 .svg-main .second-hand, #bn0032 .svg-main .minute-hand, #bn0032 .svg-main .hour-hand {
+  -webkit-transform-origin: 300px 300px;
+  -moz-transform-origin: 300px 300px;
+  -ms-transform-origin: 300px 300px;
+  -o-transform-origin: 300px 300px;
+  transform-origin: 300px 300px;
+}

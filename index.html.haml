@@ -27,6 +27,19 @@
       ga('send', 'pageview');
   %body
     = render :partial => 'nav'
+    %section.watch#bn0032
+      = render :partial => 'watches/bn0032'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 BN0032
+            %ul.info-list
+              %li
+                %span.key Maker
+                %a.value{:href => 'http://www.formuswithlove.se/', :target => '_blank'} Braun
+              %li
+                %span.key Posted
+                %span.value Aug. 16th, 2013
     %section.watch#no1
       = render :partial => 'watches/no1'
       .watch-info
