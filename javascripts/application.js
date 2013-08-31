@@ -104,6 +104,7 @@
         return this.elements.each(function(i, el) {
           var $el;
           $el = $(el);
+          _this.$dayIndicator = $el.find(settings.dayIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);
           _this.$secondIndicator = $el.find(settings.secondIndicator);
@@ -127,7 +128,7 @@
         clearTimeout(this.updateTimer);
         this.isAnimatingHands = false;
         if (longTransition) {
-          this.$hourIndicator.add(this.$minuteIndicator).addClass('long-transition');
+          this.$hourIndicator.add(this.$minuteIndicator).add(this.$dayIndicator).addClass('long-transition');
         }
         defer(function() {
           _this.updateTime();

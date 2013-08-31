@@ -71,6 +71,7 @@ $ ->
 
       @elements.each (i, el) =>
         $el = $(el)
+        @$dayIndicator = $el.find(settings.dayIndicator)
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
         @$secondIndicator = $el.find(settings.secondIndicator)
@@ -84,7 +85,7 @@ $ ->
     startAnimation: (longTransition = true) =>
       clearTimeout @updateTimer
       @isAnimatingHands = false
-      @$hourIndicator.add(@$minuteIndicator).addClass('long-transition') if longTransition
+      @$hourIndicator.add(@$minuteIndicator).add(@$dayIndicator).addClass('long-transition') if longTransition
       defer =>
         @updateTime()
         @isAnimatingHands = true
