@@ -200,7 +200,7 @@
         return time = {
           day: {
             val: d,
-            deg: this.valToDeg(d, 31)
+            deg: this.valToDeg(d - 1, 31)
           },
           hour: {
             val: h,

@@ -144,7 +144,7 @@ $ ->
       time =
         day:
             val: d
-            deg: @valToDeg(d, 31)
+            deg: @valToDeg(d-1, 31)
         hour:
           val: h
           deg: @valToDeg(h, 12)
