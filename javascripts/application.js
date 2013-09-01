@@ -2,7 +2,7 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   $(function() {
-    var $signupForm, apiKey, mcApiBase, offsets, watches;
+    var $signupForm, apiKey, mcApiBase, offsets, toggleVisibleWatches, watches;
     $(document).foundation();
     if (Modernizr.is_mobile) {
       defer(function() {
@@ -39,6 +39,17 @@
       paris: 2,
       sanfrancisco: -7
     };
+    toggleVisibleWatches = function() {
+      return $.each(watches, function(i, watch) {
+        if (watch.$.visible()) {
+          console.log(['visible', watch]);
+          return watch.play();
+        } else {
+          console.log(['invisible', watch]);
+          return watch.pause();
+        }
+      });
+    };
     $('.timezones li a').click(function(e) {
       var $el, city;
       e.preventDefault();
@@ -62,14 +73,17 @@
   (function($) {
     var Clocker, defer;
     Clocker = (function() {
-      var updateTimer;
+      var updateTimer,
+        _this = this;
 
       function Clocker(elements, options) {
         this.elements = elements;
         this.options = options;
         this.updateTime = __bind(this.updateTime, this);
 
-        this.startAnimation = __bind(this.startAnimation, this);
+        this.pause = __bind(this.pause, this);
+
+        this.play = __bind(this.play, this);
 
         this.setOffset = __bind(this.setOffset, this);
 
@@ -103,29 +117,29 @@
         settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
           var $el;
-          $el = $(el);
+          _this.$ = $el = $(el);
           _this.$dayIndicator = $el.find(settings.dayIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);
           _this.$secondIndicator = $el.find(settings.secondIndicator);
-          return _this.startAnimation(false);
+          return _this.play(false);
         });
       };
 
       Clocker.prototype.setOffset = function(offset) {
         if (this.offsetTimezone !== offset && (offset || this.offsetTimezone !== this.localOffset)) {
           this.offsetTimezone = offset;
-          return this.startAnimation();
+          return this.play();
         }
       };
 
-      Clocker.prototype.startAnimation = function(longTransition) {
+      Clocker.prototype.play = function(longTransition) {
         var events,
           _this = this;
         if (longTransition == null) {
           longTransition = true;
         }
-        clearTimeout(this.updateTimer);
+        this.pause();
         this.isAnimatingHands = false;
         if (longTransition) {
           this.$hourIndicator.add(this.$minuteIndicator).add(this.$dayIndicator).addClass('long-transition');
@@ -143,11 +157,15 @@
         });
       };
 
+      Clocker.prototype.pause = function() {
+        return clearTimeout(this.updateTimer);
+      };
+
       Clocker.prototype.updateTime = function() {
         var time,
           _this = this;
         time = this.getTime();
-        $.each(time, function(key, val) {
+        return $.each(time, function(key, val) {
           var $indicator, degree;
           $indicator = _this["$" + key + "Indicator"];
           degree = val.exactDeg || val.deg;
@@ -172,10 +190,11 @@
             }
           }
         });
-        return this.updateTimer = setTimeout((function() {
-          return _this.updateTime();
-        }), 200);
       };
+
+      Clocker.prototype.updateTimer = setTimeout((function() {
+        return Clocker.updateTime();
+      }), 200);
 
       Clocker.prototype.updateIndicator = function($indicator, deg) {
         return $indicator.css(this.prefixVendor('transform', "rotate(" + deg + "deg)"));
@@ -243,7 +262,7 @@
 
       return Clocker;
 
-    })();
+    }).call(this);
     defer = function(callback) {
       return setTimeout(callback, 1);
     };
