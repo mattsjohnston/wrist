@@ -6053,26 +6053,26 @@ p {
   position: absolute;
 }
 /* line 9, ../sass/components/_watch.sass */
-.watch .svg-main .second-indicator, .watch .svg-main .minute-indicator, .watch .svg-main .hour-indicator, .watch .svg-main .day-indicator {
-  -webkit-transform-origin: 147px 300px;
-  -moz-transform-origin: 147px 300px;
-  -ms-transform-origin: 147px 300px;
-  -o-transform-origin: 147px 300px;
-  transform-origin: 147px 300px;
+.watch .svg-main .second-indicator, .watch .svg-main .second-shadow, .watch .svg-main .minute-indicator, .watch .svg-main .minute-shadow, .watch .svg-main .hour-indicator, .watch .svg-main .hour-shadow, .watch .svg-main .day-indicator {
+  -webkit-transform-origin: 200px 300px;
+  -moz-transform-origin: 200px 300px;
+  -ms-transform-origin: 200px 300px;
+  -o-transform-origin: 200px 300px;
+  transform-origin: 200px 300px;
   -webkit-transition: 70ms cubic-bezier(0.86, 0, 0.07, 1) all;
   -moz-transition: 70ms cubic-bezier(0.86, 0, 0.07, 1) all;
   -o-transition: 70ms cubic-bezier(0.86, 0, 0.07, 1) all;
   transition: 70ms cubic-bezier(0.86, 0, 0.07, 1) all;
 }
 /* line 12, ../sass/components/_watch.sass */
-.watch .svg-main .second-indicator.no-transition, .watch .svg-main .minute-indicator.no-transition, .watch .svg-main .hour-indicator.no-transition, .watch .svg-main .day-indicator.no-transition {
+.watch .svg-main .second-indicator.no-transition, .watch .svg-main .second-shadow.no-transition, .watch .svg-main .minute-indicator.no-transition, .watch .svg-main .minute-shadow.no-transition, .watch .svg-main .hour-indicator.no-transition, .watch .svg-main .hour-shadow.no-transition, .watch .svg-main .day-indicator.no-transition {
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
   transition: none;
 }
 /* line 14, ../sass/components/_watch.sass */
-.watch .svg-main .second-indicator.long-transition, .watch .svg-main .minute-indicator.long-transition, .watch .svg-main .hour-indicator.long-transition, .watch .svg-main .day-indicator.long-transition {
+.watch .svg-main .second-indicator.long-transition, .watch .svg-main .second-shadow.long-transition, .watch .svg-main .minute-indicator.long-transition, .watch .svg-main .minute-shadow.long-transition, .watch .svg-main .hour-indicator.long-transition, .watch .svg-main .hour-shadow.long-transition, .watch .svg-main .day-indicator.long-transition {
   -webkit-transition-duration: 3.5s;
   -moz-transition-duration: 3.5s;
   -o-transition-duration: 3.5s;
@@ -6467,6 +6467,14 @@ footer .twitter-follow-button, footer .twitter-share-button {
   background-color: #d2f1d0;
 }
 /* line 4, ../sass/watches/_weekender.sass */
+#weekender .svg-main .second-indicator, #weekender .svg-main .minute-indicator, #weekender .svg-main .hour-indicator, #weekender .svg-main .day-indicator {
+  -webkit-transform-origin: 147px 300px;
+  -moz-transform-origin: 147px 300px;
+  -ms-transform-origin: 147px 300px;
+  -o-transform-origin: 147px 300px;
+  transform-origin: 147px 300px;
+}
+/* line 6, ../sass/watches/_weekender.sass */
 #weekender .svg-main .second-indicator {
   -webkit-transform: rotate(33deg);
   -moz-transform: rotate(33deg);
@@ -6474,7 +6482,7 @@ footer .twitter-follow-button, footer .twitter-share-button {
   -o-transform: rotate(33deg);
   transform: rotate(33deg);
 }
-/* line 6, ../sass/watches/_weekender.sass */
+/* line 8, ../sass/watches/_weekender.sass */
 #weekender .svg-main .minute-indicator {
   -webkit-transform: rotate(60deg);
   -moz-transform: rotate(60deg);
@@ -6482,7 +6490,7 @@ footer .twitter-follow-button, footer .twitter-share-button {
   -o-transform: rotate(60deg);
   transform: rotate(60deg);
 }
-/* line 8, ../sass/watches/_weekender.sass */
+/* line 10, ../sass/watches/_weekender.sass */
 #weekender .svg-main .hour-indicator {
   -webkit-transform: rotate(100deg);
   -moz-transform: rotate(100deg);
@@ -6490,7 +6498,7 @@ footer .twitter-follow-button, footer .twitter-share-button {
   -o-transform: rotate(100deg);
   transform: rotate(100deg);
 }
-/* line 11, ../sass/watches/_weekender.sass */
+/* line 13, ../sass/watches/_weekender.sass */
 #weekender .watch-info h3 {
   color: #395138;
 }
@@ -6527,4 +6535,25 @@ footer .twitter-follow-button, footer .twitter-share-button {
   -ms-transform-origin: 300px 282.7px;
   -o-transform-origin: 300px 282.7px;
   transform-origin: 300px 282.7px;
+}
+
+/* line 1, ../sass/watches/_normal.sass */
+#normal {
+  background-color: #5dc2a6;
+}
+/* line 5, ../sass/watches/_normal.sass */
+#normal .svg-main .hour-shadow {
+  -webkit-transform-origin: 200px 304px;
+  -moz-transform-origin: 200px 304px;
+  -ms-transform-origin: 200px 304px;
+  -o-transform-origin: 200px 304px;
+  transform-origin: 200px 304px;
+}
+/* line 7, ../sass/watches/_normal.sass */
+#normal .svg-main .second-shadow, #normal .svg-main .minute-shadow {
+  -webkit-transform-origin: 200px 303px;
+  -moz-transform-origin: 200px 303px;
+  -ms-transform-origin: 200px 303px;
+  -o-transform-origin: 200px 303px;
+  transform-origin: 200px 303px;
 }

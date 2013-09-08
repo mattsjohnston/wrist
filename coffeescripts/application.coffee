@@ -24,6 +24,10 @@ $ ->
   watches.weekender = $('#weekender .svg-main').clocker()
   watches.no1 = $('#no1 .svg-main').clocker()
   watches.bn0032 = $('#bn0032 .svg-main').clocker()
+  watches.normal = $('#normal .svg-main').clocker
+    hourIndicator: '.hour-indicator, .hour-shadow'
+    secondIndicator: '.second-indicator, .second-shadow'
+    minuteIndicator: '.minute-indicator, .minute-shadow'
 
   offsets =
     local: false

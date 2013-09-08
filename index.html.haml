@@ -27,6 +27,19 @@
       ga('send', 'pageview');
   %body
     = render :partial => 'nav'
+    %section.watch#normal
+      = render :partial => 'watches/normal'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 Extra Normal
+            %ul.info-list
+              %li
+                %span.key Maker
+                %a.value{:href => 'http://normaldesign.net/en/watches/watches-extra-normal', :target => '_blank'} Normal
+              %li
+                %span.key Posted
+                %span.value Sep. 8th, 2013
     %section.watch#bn0032
       = render :partial => 'watches/bn0032'
       .watch-info
