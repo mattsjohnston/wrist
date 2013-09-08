@@ -35,6 +35,18 @@ $ ->
     paris: 2
     sanfrancisco: -7
 
+  toggleVisibleWatches = ->
+    $.each watches, (i, watch) ->
+      if watch.$.visible()
+        console.log ['visible', watch]
+        watch.play()
+      else
+        console.log ['invisible', watch]
+        watch.pause()
+
+  # toggleVisibleWatches()
+  # $(document).on 'scroll', toggleVisibleWatches
+
   $('.timezones li a').click (e) ->
     e.preventDefault()
     $el = $(e.target)
@@ -74,20 +86,20 @@ $ ->
       settings = $.extend settings, @options
 
       @elements.each (i, el) =>
-        $el = $(el)
+        @$ = $el = $(el)
         @$dayIndicator = $el.find(settings.dayIndicator)
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
         @$secondIndicator = $el.find(settings.secondIndicator)
-        @startAnimation(false)
+        @play(false)
 
     setOffset: (offset) =>
       if @offsetTimezone != offset && (offset || @offsetTimezone != @localOffset)
         @offsetTimezone = offset
-        @startAnimation()
+        @play()
 
-    startAnimation: (longTransition = true) =>
-      clearTimeout @updateTimer
+    play: (longTransition = true) =>
+      @pause()
       @isAnimatingHands = false
       @$hourIndicator.add(@$minuteIndicator).add(@$dayIndicator).addClass('long-transition') if longTransition
       defer =>
@@ -99,6 +111,9 @@ $ ->
         @isAnimatingHands = false
         @$hourIndicator.add(@$minuteIndicator).removeClass('long-transition')
         @$minuteIndicator.unbind events
+
+    pause: =>
+      clearTimeout @updateTimer
 
     updateTime: =>
       time = @getTime()
@@ -119,9 +134,9 @@ $ ->
           else
             @updateIndicator($indicator, degree)
 
-      @updateTimer = setTimeout (=>
-        @updateTime()
-      ), 200
+    updateTimer:  setTimeout (=>
+                    @updateTime()
+                  ), 200
 
     updateIndicator: ($indicator, deg) ->
       $indicator.css @prefixVendor('transform', "rotate(#{deg}deg)")
@@ -147,8 +162,8 @@ $ ->
 
       time =
         day:
-            val: d
-            deg: @valToDeg(d-1, 31)
+          val: d
+          deg: @valToDeg(d-1, 31)
         hour:
           val: h
           deg: @valToDeg(h, 12)
