@@ -46,15 +46,15 @@
     };
     toggleVisibleWatches = function() {
       return $.each(watches, function(i, watch) {
-        if (watch.$.visible()) {
-          console.log(['visible', watch]);
+        if (watch.$.visible(true)) {
           return watch.play();
         } else {
-          console.log(['invisible', watch]);
           return watch.pause();
         }
       });
     };
+    toggleVisibleWatches();
+    $(document).on('scroll', toggleVisibleWatches);
     $('.timezones li a').click(function(e) {
       var $el, city;
       e.preventDefault();
@@ -78,8 +78,7 @@
   (function($) {
     var Clocker, defer;
     Clocker = (function() {
-      var updateTimer,
-        _this = this;
+      var updateTimer;
 
       function Clocker(elements, options) {
         this.elements = elements;
@@ -170,7 +169,7 @@
         var time,
           _this = this;
         time = this.getTime();
-        return $.each(time, function(key, val) {
+        $.each(time, function(key, val) {
           var $indicator, degree;
           $indicator = _this["$" + key + "Indicator"];
           degree = val.exactDeg || val.deg;
@@ -195,11 +194,10 @@
             }
           }
         });
+        return this.updateTimer = setTimeout((function() {
+          return _this.updateTime();
+        }), 200);
       };
-
-      Clocker.prototype.updateTimer = setTimeout((function() {
-        return Clocker.updateTime();
-      }), 200);
 
       Clocker.prototype.updateIndicator = function($indicator, deg) {
         return $indicator.css(this.prefixVendor('transform', "rotate(" + deg + "deg)"));
@@ -267,7 +265,7 @@
 
       return Clocker;
 
-    }).call(this);
+    })();
     defer = function(callback) {
       return setTimeout(callback, 1);
     };

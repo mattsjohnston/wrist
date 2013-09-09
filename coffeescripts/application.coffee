@@ -37,15 +37,13 @@ $ ->
 
   toggleVisibleWatches = ->
     $.each watches, (i, watch) ->
-      if watch.$.visible()
-        console.log ['visible', watch]
+      if watch.$.visible(true)
         watch.play()
       else
-        console.log ['invisible', watch]
         watch.pause()
 
-  # toggleVisibleWatches()
-  # $(document).on 'scroll', toggleVisibleWatches
+  toggleVisibleWatches()
+  $(document).on 'scroll', toggleVisibleWatches
 
   $('.timezones li a').click (e) ->
     e.preventDefault()
@@ -134,9 +132,9 @@ $ ->
           else
             @updateIndicator($indicator, degree)
 
-    updateTimer:  setTimeout (=>
-                    @updateTime()
-                  ), 200
+      @updateTimer= setTimeout (=>
+                      @updateTime()
+                    ), 200
 
     updateIndicator: ($indicator, deg) ->
       $indicator.css @prefixVendor('transform', "rotate(#{deg}deg)")
