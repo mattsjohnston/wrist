@@ -5884,12 +5884,12 @@ p {
   text-indent: -999em;
   width: 124px;
   height: 28px;
-  background: url("../images/logo-white.png") no-repeat;
+  background: url("../images/logo-white.gif") no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   /* line 7, ../sass/components/_top_bar.sass */
   .top-bar .title-area .name h1 a {
-    background-image: url("../images/logo-white-hd.png");
+    background-image: url("../images/logo-white-hd.gif");
     background-size: 123px 28px;
   }
 }
