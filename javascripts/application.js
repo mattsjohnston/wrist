@@ -39,6 +39,9 @@
       secondIndicator: '.second-indicator, .second-shadow',
       minuteIndicator: '.minute-indicator, .minute-shadow'
     });
+    watches.polygon = $('#polygon .svg-main').clocker({
+      dayMultiplier: -1
+    });
     offsets = {
       local: false,
       london: 1,
@@ -117,9 +120,13 @@
           dayIndicator: '.day-indicator',
           hourIndicator: '.hour-indicator',
           minuteIndicator: '.minute-indicator',
-          secondIndicator: '.second-indicator'
+          secondIndicator: '.second-indicator',
+          dayMultiplier: 1,
+          hourMultiplier: 1,
+          minuteMultiplier: 1,
+          secondMultiplier: 1
         };
-        settings = $.extend(settings, this.options);
+        this.settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
           var $el;
 
@@ -174,9 +181,10 @@
 
         time = this.getTime();
         $.each(time, function(key, val) {
-          var $indicator, degree;
+          var $indicator, degree, multiplier;
 
           $indicator = _this["$" + key + "Indicator"];
+          multiplier = _this.settings["" + key + "Multiplier"];
           degree = val.exactDeg || val.deg;
           if ($indicator && (!_this.isAnimatingHands || key === 'second')) {
             if (degree > 20 && degree < 30) {
@@ -186,16 +194,16 @@
               _this["" + key + "Loop"] = degree;
               $indicator.addClass('no-transition');
               return defer(function() {
-                _this.updateIndicator($indicator, 0);
+                _this.updateIndicator($indicator, 0, 1);
                 return defer(function() {
                   $indicator.removeClass('no-transition');
                   return defer(function() {
-                    return _this.updateIndicator($indicator, degree);
+                    return _this.updateIndicator($indicator, degree, multiplier);
                   });
                 });
               });
             } else {
-              return _this.updateIndicator($indicator, degree);
+              return _this.updateIndicator($indicator, degree, multiplier);
             }
           }
         });
@@ -204,8 +212,8 @@
         }), 200);
       };
 
-      Clocker.prototype.updateIndicator = function($indicator, deg) {
-        return $indicator.css(this.prefixVendor('transform', "rotate(" + deg + "deg)"));
+      Clocker.prototype.updateIndicator = function($indicator, deg, multiplier) {
+        return $indicator.css(this.prefixVendor('transform', "rotate(" + (deg * multiplier) + "deg)"));
       };
 
       Clocker.prototype.getTime = function() {

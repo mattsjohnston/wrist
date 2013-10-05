@@ -28,7 +28,9 @@ $ ->
     hourIndicator: '.hour-indicator, .hour-shadow'
     secondIndicator: '.second-indicator, .second-shadow'
     minuteIndicator: '.minute-indicator, .minute-shadow'
+  watches.polygon = $('#polygon .svg-main').clocker dayMultiplier: -1
 
+  # set the timezone offsets for the toggle
   offsets =
     local: false
     london: 1
@@ -79,9 +81,13 @@ $ ->
         hourIndicator: '.hour-indicator'
         minuteIndicator: '.minute-indicator'
         secondIndicator: '.second-indicator'
+        dayMultiplier: 1
+        hourMultiplier: 1
+        minuteMultiplier: 1
+        secondMultiplier: 1
 
       # Merge default settings with options.
-      settings = $.extend settings, @options
+      @settings = $.extend settings, @options
 
       @elements.each (i, el) =>
         @$ = $el = $(el)
@@ -117,6 +123,7 @@ $ ->
       time = @getTime()
       $.each time, (key, val) =>
         $indicator = @["$#{key}Indicator"]
+        multiplier = @settings["#{key}Multiplier"]
         degree = val.exactDeg || val.deg
         if $indicator && (!@isAnimatingHands || key == 'second')
           if degree > 20 && degree < 30
@@ -125,19 +132,19 @@ $ ->
             @["#{key}Loop"] = degree
             $indicator.addClass('no-transition')
             defer =>
-              @updateIndicator($indicator, 0)
+              @updateIndicator($indicator, 0, 1)
               defer =>
                 $indicator.removeClass 'no-transition'
-                defer => @updateIndicator($indicator, degree)
+                defer => @updateIndicator($indicator, degree, multiplier)
           else
-            @updateIndicator($indicator, degree)
+            @updateIndicator($indicator, degree, multiplier)
 
       @updateTimer= setTimeout (=>
                       @updateTime()
                     ), 200
 
-    updateIndicator: ($indicator, deg) ->
-      $indicator.css @prefixVendor('transform', "rotate(#{deg}deg)")
+    updateIndicator: ($indicator, deg, multiplier) ->
+      $indicator.css @prefixVendor('transform', "rotate(#{deg*multiplier}deg)")
 
     getTime: ->
       now = new Date()
