@@ -3,6 +3,7 @@
 
   $(function() {
     var $signupForm, apiKey, mcApiBase, offsets, toggleVisibleWatches, watches;
+
     $(document).foundation();
     if (Modernizr.is_mobile) {
       defer(function() {
@@ -57,6 +58,7 @@
     $(document).on('scroll', toggleVisibleWatches);
     $('.timezones li a').click(function(e) {
       var $el, city;
+
       e.preventDefault();
       $el = $(e.target);
       $el.parents('.timezones').find('li').removeClass('current');
@@ -68,6 +70,7 @@
     });
     return $('.al').click(function(e) {
       var anchor;
+
       e.preventDefault;
       anchor = $(e.target).attr('href');
       $.scrollTo($(anchor).offset().top, 1000);
@@ -77,6 +80,7 @@
 
   (function($) {
     var Clocker, defer;
+
     Clocker = (function() {
       var updateTimer;
 
@@ -84,13 +88,9 @@
         this.elements = elements;
         this.options = options;
         this.updateTime = __bind(this.updateTime, this);
-
         this.pause = __bind(this.pause, this);
-
         this.play = __bind(this.play, this);
-
         this.setOffset = __bind(this.setOffset, this);
-
         this.init();
         this.$ = this.elements;
       }
@@ -112,6 +112,7 @@
       Clocker.prototype.init = function() {
         var settings,
           _this = this;
+
         settings = {
           dayIndicator: '.day-indicator',
           hourIndicator: '.hour-indicator',
@@ -121,6 +122,7 @@
         settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
           var $el;
+
           _this.$ = $el = $(el);
           _this.$dayIndicator = $el.find(settings.dayIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
@@ -140,6 +142,7 @@
       Clocker.prototype.play = function(longTransition) {
         var events,
           _this = this;
+
         if (longTransition == null) {
           longTransition = true;
         }
@@ -168,9 +171,11 @@
       Clocker.prototype.updateTime = function() {
         var time,
           _this = this;
+
         time = this.getTime();
         $.each(time, function(key, val) {
           var $indicator, degree;
+
           $indicator = _this["$" + key + "Indicator"];
           degree = val.exactDeg || val.deg;
           if ($indicator && (!_this.isAnimatingHands || key === 'second')) {
@@ -205,6 +210,7 @@
 
       Clocker.prototype.getTime = function() {
         var d, exactH, exactM, exactS, h, m, mil, now, s, time, utc;
+
         now = new Date();
         if (this.offsetTimezone !== false) {
           utc = now.getTime() + now.getTimezoneOffset() * 60000;
@@ -247,6 +253,7 @@
 
       Clocker.prototype.prefixVendor = function(property, val) {
         var prefix, properties, _fn, _i, _len, _ref;
+
         properties = {
           property: val
         };
@@ -271,6 +278,7 @@
     };
     return jQuery.fn.clocker = function(options) {
       var clocker;
+
       clocker = new Clocker(this, options);
       return clocker;
     };
