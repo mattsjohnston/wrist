@@ -7616,38 +7616,6 @@ footer .twitter-follow-button, footer .twitter-share-button {
   background-color: #d2f1d0;
 }
 /* line 4, ../sass/watches/_weekender.sass */
-#weekender .svg-main .second-indicator, #weekender .svg-main .minute-indicator, #weekender .svg-main .hour-indicator, #weekender .svg-main .day-indicator {
-  -webkit-transform-origin: 147px 300px;
-  -moz-transform-origin: 147px 300px;
-  -ms-transform-origin: 147px 300px;
-  -o-transform-origin: 147px 300px;
-  transform-origin: 147px 300px;
-}
-/* line 6, ../sass/watches/_weekender.sass */
-#weekender .svg-main .second-indicator {
-  -webkit-transform: rotate(33deg);
-  -moz-transform: rotate(33deg);
-  -ms-transform: rotate(33deg);
-  -o-transform: rotate(33deg);
-  transform: rotate(33deg);
-}
-/* line 8, ../sass/watches/_weekender.sass */
-#weekender .svg-main .minute-indicator {
-  -webkit-transform: rotate(60deg);
-  -moz-transform: rotate(60deg);
-  -ms-transform: rotate(60deg);
-  -o-transform: rotate(60deg);
-  transform: rotate(60deg);
-}
-/* line 10, ../sass/watches/_weekender.sass */
-#weekender .svg-main .hour-indicator {
-  -webkit-transform: rotate(100deg);
-  -moz-transform: rotate(100deg);
-  -ms-transform: rotate(100deg);
-  -o-transform: rotate(100deg);
-  transform: rotate(100deg);
-}
-/* line 13, ../sass/watches/_weekender.sass */
 #weekender .watch-info h3 {
   color: #395138;
 }
@@ -7670,20 +7638,12 @@ footer .twitter-follow-button, footer .twitter-share-button {
   background-color: #6eceeb;
 }
 /* line 4, ../sass/watches/_bn0032.sass */
-#bn0032 .svg-main .second-indicator, #bn0032 .svg-main .minute-indicator, #bn0032 .svg-main .hour-indicator {
-  -webkit-transform-origin: 300px 300px;
-  -moz-transform-origin: 300px 300px;
-  -ms-transform-origin: 300px 300px;
-  -o-transform-origin: 300px 300px;
-  transform-origin: 300px 300px;
-}
-/* line 6, ../sass/watches/_bn0032.sass */
 #bn0032 .svg-main .day-indicator {
-  -webkit-transform-origin: 300px 282.7px;
-  -moz-transform-origin: 300px 282.7px;
-  -ms-transform-origin: 300px 282.7px;
-  -o-transform-origin: 300px 282.7px;
-  transform-origin: 300px 282.7px;
+  -webkit-transform-origin: 200px 282.7px;
+  -moz-transform-origin: 200px 282.7px;
+  -ms-transform-origin: 200px 282.7px;
+  -o-transform-origin: 200px 282.7px;
+  transform-origin: 200px 282.7px;
 }
 
 /* line 1, ../sass/watches/_normal.sass */
