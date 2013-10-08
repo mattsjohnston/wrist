@@ -39,7 +39,7 @@
     };
     toggleVisibleWatches = function() {
       return $.each(watches, function(i, watch) {
-        if (watch.$.visible(true)) {
+        if (watch.$container.visible(true)) {
           if (watch.playState !== 'playing') {
             return watch.play();
           }
@@ -122,6 +122,7 @@
           var $el;
 
           _this.$ = $el = $(el);
+          _this.$container = _this.$.parent();
           _this.$dayIndicator = $el.find(settings.dayIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);

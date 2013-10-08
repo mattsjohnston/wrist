@@ -31,11 +31,13 @@ $ ->
 
   toggleVisibleWatches = ->
     $.each watches, (i, watch) ->
-      if watch.$.visible(true)
+      if watch.$container.visible(true)
         if watch.playState != 'playing'
           watch.play()
+          # watch.$container.removeClass 'hidden'
       else if watch.playState != 'paused'
         watch.pause()
+        # watch.$container.addClass 'hidden'
 
   toggleVisibleWatches()
   $(document).on 'scroll', toggleVisibleWatches
@@ -84,6 +86,7 @@ $ ->
 
       @elements.each (i, el) =>
         @$ = $el = $(el)
+        @$container = @$.parent()
         @$dayIndicator = $el.find(settings.dayIndicator)
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
