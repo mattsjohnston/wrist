@@ -6882,6 +6882,111 @@ a.th {
   max-width: 800px;
 }
 
+/* --- Awwwards Ribbons --- */
+/* Base */
+/* line 5, ../sass/lib/_awwwards.sass */
+.ribbon {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  z-index: 1;
+}
+
+/* line 11, ../sass/lib/_awwwards.sass */
+#cssda {
+  top: 185px;
+}
+
+/* line 15, ../sass/lib/_awwwards.sass */
+#awwwards a {
+  display: block;
+  width: 70px;
+  height: 105px;
+  text-indent: -8000px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  overflow: hidden;
+}
+/* line 23, ../sass/lib/_awwwards.sass */
+#awwwards.left.black a {
+  background-image: url("../images/ribbons/awwwards_honorable_black_left.png");
+}
+/* line 25, ../sass/lib/_awwwards.sass */
+#awwwards.right.black a {
+  background-image: url("../images/ribbons/awwwards_honorable_black_right.png");
+}
+/* line 27, ../sass/lib/_awwwards.sass */
+#awwwards.left.white a {
+  background-image: url("../images/ribbons/awwwards_honorable_white_left.png");
+}
+/* line 29, ../sass/lib/_awwwards.sass */
+#awwwards.right.white a {
+  background-image: url("../images/ribbons/awwwards_honorable_white_right.png");
+}
+/* line 31, ../sass/lib/_awwwards.sass */
+#awwwards.left.green a {
+  background-image: url("../images/ribbons/awwwards_honorable_green_left.png");
+}
+/* line 33, ../sass/lib/_awwwards.sass */
+#awwwards.right.green a {
+  background-image: url("../images/ribbons/awwwards_honorable_green_right.png");
+}
+
+/* Left */
+/* Right */
+/* Link */
+/* Black */
+/* White */
+/* Green */
+/* MEDIA QUERIES */
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  /* hidden */
+  /* line 54, ../sass/lib/_awwwards.sass */
+  .ribbon {
+    display: none;
+  }
+}
+/* Retina Displays */
+/* Target any device with retina display (ie iPad 3 and MacBook Pro) */
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) {
+  /* line 63, ../sass/lib/_awwwards.sass */
+  #awwwards a {
+    -moz-background-size: 70px 105px;
+    -ie-background-size: 70px 105px;
+    -o-background-size: 70px 105px;
+    -webkit-background-size: 70px 105px;
+    background-size: 70px 105px;
+  }
+  /* line 69, ../sass/lib/_awwwards.sass */
+  #awwwards.left.black a {
+    background-image: url("../images/ribbons/awwwards_honorable_black_left2x.png");
+  }
+  /* line 71, ../sass/lib/_awwwards.sass */
+  #awwwards.right.black a {
+    background-image: url("../images/ribbons/awwwards_honorable_black_right2x.png");
+  }
+  /* line 73, ../sass/lib/_awwwards.sass */
+  #awwwards.left.white a {
+    background-image: url("../images/ribbons/awwwards_honorable_white_left2x.png");
+  }
+  /* line 75, ../sass/lib/_awwwards.sass */
+  #awwwards.right.white a {
+    background-image: url("../images/ribbons/awwwards_honorable_white_right2x.png");
+  }
+  /* line 77, ../sass/lib/_awwwards.sass */
+  #awwwards.left.green a {
+    background-image: url("../images/ribbons/awwwards_honorable_green_left2x.png");
+  }
+  /* line 79, ../sass/lib/_awwwards.sass */
+  #awwwards.right.green a {
+    background-image: url("../images/ribbons/awwwards_honorable_green_right2x.png");
+  }
+
+  /* Gray */
+  /* White */
+  /* Green */
+}
 /* line 1, ../sass/base/_base.sass */
 body, html {
   height: 100%;
@@ -6912,112 +7017,6 @@ p {
   line-height: 2em;
 }
 
-/* --- Awwwards Ribbons --- */
-/* Base */
-/* line 5, ../sass/components/_awwwards.sass */
-#awwwards {
-  position: fixed;
-  top: 120px;
-  z-index: 9999;
-}
-/* line 9, ../sass/components/_awwwards.sass */
-#awwwards.left {
-  left: 0;
-}
-/* line 11, ../sass/components/_awwwards.sass */
-#awwwards.right {
-  right: 0;
-}
-/* line 13, ../sass/components/_awwwards.sass */
-#awwwards a {
-  display: block;
-  width: 70px;
-  height: 105px;
-  text-indent: -8000px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  overflow: hidden;
-}
-/* line 21, ../sass/components/_awwwards.sass */
-#awwwards.left.black a {
-  background-image: url("ribbons/awwwards_nominee_black_left.png");
-}
-/* line 23, ../sass/components/_awwwards.sass */
-#awwwards.right.black a {
-  background-image: url("ribbons/awwwards_nominee_black_right.png");
-}
-/* line 25, ../sass/components/_awwwards.sass */
-#awwwards.left.white a {
-  background-image: url("ribbons/awwwards_nominee_white_left.png");
-}
-/* line 27, ../sass/components/_awwwards.sass */
-#awwwards.right.white a {
-  background-image: url("ribbons/awwwards_nominee_white_right.png");
-}
-/* line 29, ../sass/components/_awwwards.sass */
-#awwwards.left.green a {
-  background-image: url("ribbons/awwwards_nominee_green_left.png");
-}
-/* line 31, ../sass/components/_awwwards.sass */
-#awwwards.right.green a {
-  background-image: url("ribbons/awwwards_nominee_green_right.png");
-}
-
-/* Left */
-/* Right */
-/* Link */
-/* Black */
-/* White */
-/* Green */
-/* MEDIA QUERIES */
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-  /* hidden */
-  /* line 52, ../sass/components/_awwwards.sass */
-  #awwwards {
-    display: none;
-  }
-}
-/* Retina Displays */
-/* Target any device with retina display (ie iPad 3 and MacBook Pro) */
-@media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) {
-  /* line 61, ../sass/components/_awwwards.sass */
-  #awwwards a {
-    -moz-background-size: 70px 105px;
-    -ie-background-size: 70px 105px;
-    -o-background-size: 70px 105px;
-    -webkit-background-size: 70px 105px;
-    background-size: 70px 105px;
-  }
-  /* line 67, ../sass/components/_awwwards.sass */
-  #awwwards.left.black a {
-    background-image: url("../images/ribbons/awwwards_nominee_black_left2x.png");
-  }
-  /* line 69, ../sass/components/_awwwards.sass */
-  #awwwards.right.black a {
-    background-image: url("../images/ribbons/awwwards_nominee_black_right2x.png");
-  }
-  /* line 71, ../sass/components/_awwwards.sass */
-  #awwwards.left.white a {
-    background-image: url("../images/ribbons/awwwards_nominee_white_left2x.png");
-  }
-  /* line 73, ../sass/components/_awwwards.sass */
-  #awwwards.right.white a {
-    background-image: url("../images/ribbons/awwwards_nominee_white_right2x.png");
-  }
-  /* line 75, ../sass/components/_awwwards.sass */
-  #awwwards.left.green a {
-    background-image: url("../images/ribbons/awwwards_nominee_green_left2x.png");
-  }
-  /* line 77, ../sass/components/_awwwards.sass */
-  #awwwards.right.green a {
-    background-image: url("../images/ribbons/awwwards_nominee_green_right2x.png");
-  }
-
-  /* Gray */
-  /* White */
-  /* Green */
-}
 /* line 1, ../sass/components/_top_bar.sass */
 .top-bar {
   padding: 0 31px;

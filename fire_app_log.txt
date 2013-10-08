@@ -14,3 +14,99 @@
 2013-10-05 12:31:08 identical stylesheets/app.css 
 2013-10-05 12:36:25 overwrite stylesheets/app.css 
 2013-10-05 12:47:03 overwrite stylesheets/app.css 
+2013-10-05 13:03:26     error sass/app.sass (Line 9: File to import not found or unreadable: lib/awwwards.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-10-05 13:03:26 overwrite stylesheets/app.css 
+2013-10-05 13:03:55     error sass/app.sass (Line 9: File to import not found or unreadable: lib/awwwards.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-10-05 13:03:55 overwrite stylesheets/app.css 
+2013-10-05 13:03:58     error sass/app.sass (Line 9: File to import not found or unreadable: lib/awwwards.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-10-05 13:03:58 identical stylesheets/app.css 
+2013-10-05 13:04:04     error sass/app.sass (Line 9: File to import not found or unreadable: lib/awwwards.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-10-05 13:04:04 overwrite stylesheets/app.css 
+2013-10-05 13:07:41     error sass/app.sass (Line 31 of sass/lib/_awwwards.sass: Invalid CSS after "0 0": expected expression (e.g. 1px, bold), was ";")
+2013-10-05 13:07:41 overwrite stylesheets/app.css 
+2013-10-05 13:07:46 overwrite stylesheets/app.css 
+2013-10-05 13:07:49 identical stylesheets/app.css 
+2013-10-05 13:07:51 identical stylesheets/app.css 
+2013-10-05 13:07:56 identical stylesheets/app.css 
+2013-10-05 13:08:00 identical stylesheets/app.css 
+2013-10-05 13:09:04 overwrite stylesheets/app.css 
+2013-10-05 13:09:09 identical stylesheets/app.css 
+2013-10-05 13:10:06 overwrite stylesheets/app.css 
+2013-10-05 13:10:09 identical stylesheets/app.css 
+2013-10-06 11:13:20 identical stylesheets/app.css 
+2013-10-07 00:31:20 overwrite javascripts/application.js
+2013-10-07 00:33:13     error coffeescripts/application.coffee: SyntaxError: unmatched )
+2013-10-07 00:33:13 overwrite javascripts/application.js
+2013-10-07 00:33:40     error coffeescripts/application.coffee: SyntaxError: unmatched )
+2013-10-07 00:33:40 overwrite javascripts/application.js
+2013-10-07 00:34:19 overwrite javascripts/application.js
+2013-10-07 00:36:56 overwrite javascripts/application.js
+2013-10-07 00:37:27 overwrite javascripts/application.js
+2013-10-07 00:37:54 overwrite javascripts/application.js
+2013-10-07 00:39:11 overwrite javascripts/application.js
+2013-10-07 00:40:36 overwrite javascripts/application.js
+2013-10-07 00:40:42 overwrite javascripts/application.js
+2013-10-07 00:42:02 overwrite javascripts/application.js
+2013-10-07 00:42:44 overwrite javascripts/application.js
+2013-10-07 00:44:24 overwrite javascripts/application.js
+2013-10-07 00:45:19 overwrite javascripts/application.js
+2013-10-07 00:46:29 overwrite javascripts/application.js
+2013-10-07 00:46:44 overwrite javascripts/application.js
+2013-10-07 00:47:05 overwrite javascripts/application.js
+2013-10-07 00:47:14 overwrite javascripts/application.js
+2013-10-07 00:51:37 overwrite javascripts/application.js
+2013-10-07 00:51:48 overwrite javascripts/application.js
+2013-10-07 00:53:33 overwrite javascripts/application.js
+2013-10-07 00:57:49 overwrite javascripts/application.js
+2013-10-07 00:57:53 overwrite javascripts/application.js
+2013-10-07 00:59:42 overwrite javascripts/application.js
+2013-10-07 01:00:42 overwrite javascripts/application.js
+2013-10-07 01:00:49 overwrite javascripts/application.js
+2013-10-07 01:03:37 overwrite javascripts/application.js
+2013-10-07 01:10:02 overwrite javascripts/application.js
+2013-10-07 13:14:29 overwrite stylesheets/app.css 
+2013-10-07 13:14:33 identical stylesheets/app.css 
+2013-10-07 13:15:03 overwrite stylesheets/app.css 
+2013-10-07 13:15:09 overwrite stylesheets/app.css 
+2013-10-07 13:15:15 identical stylesheets/app.css 
+2013-10-07 13:15:20 overwrite stylesheets/app.css 
+2013-10-07 13:15:26 identical stylesheets/app.css 
+2013-10-07 13:15:31 overwrite stylesheets/app.css 
+2013-10-07 13:15:36 identical stylesheets/app.css 
+2013-10-07 13:15:39 identical stylesheets/app.css 
+2013-10-07 13:16:04 identical stylesheets/app.css 
+2013-10-07 13:16:08 identical stylesheets/app.css 
+2013-10-07 13:16:40 overwrite stylesheets/app.css 
+2013-10-07 13:16:43 identical stylesheets/app.css 

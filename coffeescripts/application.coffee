@@ -3,23 +3,6 @@ $ ->
   if Modernizr.is_mobile
     defer -> window.scrollTo(0, 1)
 
-  # Signup form focus animation trigger
-  mcApiBase = 'https://us2.api.mailchimp.com/2.0/'
-  apiKey = '3bedf01373aae0427b97f62634f70afb-us2'
-  $signupForm = $('#signup-form')
-  $signupForm.find('input').focus (e) ->
-    $signupForm.addClass 'focusing'
-    $signupForm.find('button').html 'Sign me up!'
-  $signupForm.find('input').blur (e) ->
-    $signupForm.removeClass 'focusing'
-  $signupForm.submit (e) ->
-    e.preventDefault()
-    $.getJSON @action + "?callback=?", $(this).serialize(), (data) ->
-      if data.Status is 400
-        alert "Error: " + data.Message
-      else # 200
-        $signupForm.parent().addClass 'submitted'
-
   watches = {}
   watches.weekender = $('#weekender .svg-main').clocker()
   watches.no1 = $('#no1 .svg-main').clocker()
@@ -206,3 +189,78 @@ $ ->
     return clocker
 
 )(jQuery)
+
+
+# mailchimp form
+( ->
+
+  mce_preload_check = ->
+    return  if mce_preload_checks > 40
+    mce_preload_checks++
+    script = document.createElement("script")
+    script.type = "text/javascript"
+    script.src = "http://downloads.mailchimp.com/js/jquery.form-n-validate.js"
+    head.appendChild script
+    try
+      validatorLoaded = $("#fake-form").validate({})
+    catch err
+      setTimeout (->
+        mce_preload_check()
+      ), 250
+      return
+    mce_init_form()
+  mce_init_form = ->
+    $ ->
+      $signupForm = $('#signup-form')
+
+      options =
+        errorClass: "mce_inline_error"
+        errorElement: "div"
+        onkeyup: ->
+        onfocusout: ->
+        onblur: ->
+
+      mce_validator = $signupForm.validate(options)
+      $signupForm.unbind "submit" #remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
+      options =
+        url: "http://catalytic-design.us2.list-manage1.com/subscribe/post-json?u=e9312d1e7264ab780493019da&id=26b7366e0d&c=?"
+        type: "GET"
+        dataType: "json"
+        contentType: "application/json; charset=utf-8"
+        success: mce_success_cb
+
+      $signupForm.ajaxForm options
+
+
+  mce_success_cb = (resp) ->
+    if resp.result is "success"
+      $('#signup-form').parent().addClass 'submitted'
+    else
+      index = -1
+      msg = undefined
+      try
+        parts = resp.msg.split(" - ", 2)
+        if parts[1] is `undefined`
+          msg = resp.msg
+        else
+          i = parseInt(parts[0])
+          if i.toString() is parts[0]
+            index = parts[0]
+            msg = parts[1]
+          else
+            index = -1
+            msg = resp.msg
+      catch e
+        index = -1
+        msg = resp.msg
+      alert msg
+  fnames = new Array()
+  ftypes = new Array()
+  fnames[0] = "EMAIL"
+  ftypes[0] = "email"
+  head = document.getElementsByTagName("head")[0]
+  setTimeout (->
+    mce_preload_check()
+  ), 250
+  mce_preload_checks = 0
+)()

@@ -27,6 +27,11 @@
       ga('send', 'pageview');
   %body
     = render :partial => 'nav'
+    #awwwards.right.white.ribbon
+      %a{href: "http://www.awwwards.com", target: "_blank"} best websites of the world
+    #cssda.ribbon
+      %a{href: 'http://www.cssdesignawards.com', target: '_blank'}
+        %img{src: 'images/ribbons/nominee-ss-rhs.svg'}
     %section.watch#polygon
       = render :partial => 'watches/polygon'
       .watch-info
@@ -115,9 +120,14 @@
             %a{:href => 'https://boatbound.co', :target => '_blank'}> Boatbound
             , a peer-to-peer boat sharing service.
 
+          %p
+            We're currently looking for talented designers to join the Boatbound crew. Email
+            %a{href: 'mailto:designing@boatbound.co'}designing@boatbound.co
+            to apply.
+
           .form-container
-            %form#signup-form{:action => "http://wristwatch.createsend.com/t/i/s/oudyk/", :method => "post"}
-              %input#fieldEmail{:name => "cm-oudyk-oudyk", :placeholder => 'Enter your email', :required => "", :type => "email"}/
+            %form#signup-form{action: "http://catalytic-design.us2.list-manage.com/subscribe/post?u=e9312d1e7264ab780493019da&id=26b7366e0d", method: "post", target: '_blank'}
+              %input#mce-EMAIL{:name => "EMAIL", :placeholder => 'Enter your email', :required => "", :type => "email"}/
               %button{:type => 'submit', :name => 'submit'} Get the newsletter
 
     %footer

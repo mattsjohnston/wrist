@@ -2,7 +2,7 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   $(function() {
-    var $signupForm, apiKey, mcApiBase, offsets, toggleVisibleWatches, watches;
+    var offsets, toggleVisibleWatches, watches;
 
     $(document).foundation();
     if (Modernizr.is_mobile) {
@@ -10,26 +10,6 @@
         return window.scrollTo(0, 1);
       });
     }
-    mcApiBase = 'https://us2.api.mailchimp.com/2.0/';
-    apiKey = '3bedf01373aae0427b97f62634f70afb-us2';
-    $signupForm = $('#signup-form');
-    $signupForm.find('input').focus(function(e) {
-      $signupForm.addClass('focusing');
-      return $signupForm.find('button').html('Sign me up!');
-    });
-    $signupForm.find('input').blur(function(e) {
-      return $signupForm.removeClass('focusing');
-    });
-    $signupForm.submit(function(e) {
-      e.preventDefault();
-      return $.getJSON(this.action + "?callback=?", $(this).serialize(), function(data) {
-        if (data.Status === 400) {
-          return alert("Error: " + data.Message);
-        } else {
-          return $signupForm.parent().addClass('submitted');
-        }
-      });
-    });
     watches = {};
     watches.weekender = $('#weekender .svg-main').clocker();
     watches.no1 = $('#no1 .svg-main').clocker();
@@ -291,5 +271,95 @@
       return clocker;
     };
   })(jQuery);
+
+  (function() {
+    var fnames, ftypes, head, mce_init_form, mce_preload_check, mce_preload_checks, mce_success_cb;
+
+    mce_preload_check = function() {
+      var err, script, validatorLoaded;
+
+      if (mce_preload_checks > 40) {
+        return;
+      }
+      mce_preload_checks++;
+      script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "http://downloads.mailchimp.com/js/jquery.form-n-validate.js";
+      head.appendChild(script);
+      try {
+        validatorLoaded = $("#fake-form").validate({});
+      } catch (_error) {
+        err = _error;
+        setTimeout((function() {
+          return mce_preload_check();
+        }), 250);
+        return;
+      }
+      return mce_init_form();
+    };
+    mce_init_form = function() {
+      return $(function() {
+        var $signupForm, mce_validator, options;
+
+        $signupForm = $('#signup-form');
+        options = {
+          errorClass: "mce_inline_error",
+          errorElement: "div",
+          onkeyup: function() {},
+          onfocusout: function() {},
+          onblur: function() {}
+        };
+        mce_validator = $signupForm.validate(options);
+        $signupForm.unbind("submit");
+        options = {
+          url: "http://catalytic-design.us2.list-manage1.com/subscribe/post-json?u=e9312d1e7264ab780493019da&id=26b7366e0d&c=?",
+          type: "GET",
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: mce_success_cb
+        };
+        return $signupForm.ajaxForm(options);
+      });
+    };
+    mce_success_cb = function(resp) {
+      var e, i, index, msg, parts;
+
+      if (resp.result === "success") {
+        return $('#signup-form').parent().addClass('submitted');
+      } else {
+        index = -1;
+        msg = void 0;
+        try {
+          parts = resp.msg.split(" - ", 2);
+          if (parts[1] === undefined) {
+            msg = resp.msg;
+          } else {
+            i = parseInt(parts[0]);
+            if (i.toString() === parts[0]) {
+              index = parts[0];
+              msg = parts[1];
+            } else {
+              index = -1;
+              msg = resp.msg;
+            }
+          }
+        } catch (_error) {
+          e = _error;
+          index = -1;
+          msg = resp.msg;
+        }
+        return alert(msg);
+      }
+    };
+    fnames = new Array();
+    ftypes = new Array();
+    fnames[0] = "EMAIL";
+    ftypes[0] = "email";
+    head = document.getElementsByTagName("head")[0];
+    setTimeout((function() {
+      return mce_preload_check();
+    }), 250);
+    return mce_preload_checks = 0;
+  })();
 
 }).call(this);
