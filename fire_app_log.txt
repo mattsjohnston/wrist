@@ -110,3 +110,4 @@ Load paths:
 2013-10-07 13:16:08 identical stylesheets/app.css 
 2013-10-07 13:16:40 overwrite stylesheets/app.css 
 2013-10-07 13:16:43 identical stylesheets/app.css 
+2013-10-07 19:46:36 overwrite javascripts/application.js

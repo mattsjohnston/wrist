@@ -2,7 +2,7 @@
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   $(function() {
-    var offsets, toggleVisibleWatches, watches;
+    var $signupForm, offsets, toggleVisibleWatches, watches;
 
     $(document).foundation();
     if (Modernizr.is_mobile) {
@@ -10,6 +10,15 @@
         return window.scrollTo(0, 1);
       });
     }
+    $signupForm = $('#signup-form');
+    $signupForm.find('input').focus(function(e) {
+      $signupForm.addClass('focusing');
+      return $signupForm.find('button').html('Sign me up!');
+    });
+    $signupForm.find('input').blur(function(e) {
+      $signupForm.removeClass('focusing');
+      return $signupForm.find('button').html('Get the Newsletter');
+    });
     watches = {};
     watches.weekender = $('#weekender .svg-main').clocker();
     watches.no1 = $('#no1 .svg-main').clocker();

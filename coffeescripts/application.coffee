@@ -3,6 +3,15 @@ $ ->
   if Modernizr.is_mobile
     defer -> window.scrollTo(0, 1)
 
+  # Signup form focus animation trigger
+  $signupForm = $('#signup-form')
+  $signupForm.find('input').focus (e) ->
+    $signupForm.addClass 'focusing'
+    $signupForm.find('button').html 'Sign me up!'
+  $signupForm.find('input').blur (e) ->
+    $signupForm.removeClass 'focusing'
+    $signupForm.find('button').html 'Get the Newsletter'
+
   watches = {}
   watches.weekender = $('#weekender .svg-main').clocker()
   watches.no1 = $('#no1 .svg-main').clocker()
