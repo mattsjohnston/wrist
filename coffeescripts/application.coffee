@@ -32,8 +32,9 @@ $ ->
   toggleVisibleWatches = ->
     $.each watches, (i, watch) ->
       if watch.$.visible(true)
-        watch.play()
-      else
+        if watch.playState != 'playing'
+          watch.play()
+      else if watch.playState != 'paused'
         watch.pause()
 
   toggleVisibleWatches()
@@ -95,7 +96,8 @@ $ ->
         @play()
 
     play: (longTransition = true) =>
-      @pause()
+      clearTimeout @updateTimer
+      @playState = 'playing'
       @isAnimatingHands = false
       @$hourIndicator.add(@$minuteIndicator).add(@$dayIndicator).addClass('long-transition') if longTransition
       defer =>
@@ -110,6 +112,7 @@ $ ->
 
     pause: =>
       clearTimeout @updateTimer
+      @playState = 'paused'
 
     updateTime: =>
       time = @getTime()

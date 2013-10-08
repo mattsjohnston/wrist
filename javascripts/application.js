@@ -40,8 +40,10 @@
     toggleVisibleWatches = function() {
       return $.each(watches, function(i, watch) {
         if (watch.$.visible(true)) {
-          return watch.play();
-        } else {
+          if (watch.playState !== 'playing') {
+            return watch.play();
+          }
+        } else if (watch.playState !== 'paused') {
           return watch.pause();
         }
       });
@@ -142,7 +144,8 @@
         if (longTransition == null) {
           longTransition = true;
         }
-        this.pause();
+        clearTimeout(this.updateTimer);
+        this.playState = 'playing';
         this.isAnimatingHands = false;
         if (longTransition) {
           this.$hourIndicator.add(this.$minuteIndicator).add(this.$dayIndicator).addClass('long-transition');
@@ -161,7 +164,8 @@
       };
 
       Clocker.prototype.pause = function() {
-        return clearTimeout(this.updateTimer);
+        clearTimeout(this.updateTimer);
+        return this.playState = 'paused';
       };
 
       Clocker.prototype.updateTime = function() {
