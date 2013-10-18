@@ -72,7 +72,7 @@ $ ->
 
     init: ->
       settings =
-        dayIndicator: '.day-indicator'
+        dateIndicator: '.date-indicator'
         hourIndicator: '.hour-indicator'
         minuteIndicator: '.minute-indicator'
         secondIndicator: '.second-indicator'
@@ -80,6 +80,8 @@ $ ->
         hourMultiplier: 1
         minuteMultiplier: 1
         secondMultiplier: 1
+        analog: true
+        digital: false
 
       # Merge default settings with options.
       @settings = $.extend settings, @options
@@ -87,7 +89,7 @@ $ ->
       @elements.each (i, el) =>
         @$ = $el = $(el)
         @$container = @$.parent()
-        @$dayIndicator = $el.find(settings.dayIndicator)
+        @$dateIndicator = $el.find(settings.dateIndicator)
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
         @$secondIndicator = $el.find(settings.secondIndicator)
@@ -100,9 +102,13 @@ $ ->
 
     play: (longTransition = true) =>
       clearTimeout @updateTimer
+      @playAnalog(longTransition) if @settings.analog
+      @playDigital() if @settings.digital
+
+    playAnalog: (longTransition) =>
       @playState = 'playing'
       @isAnimatingHands = false
-      @$hourIndicator.add(@$minuteIndicator).add(@$dayIndicator).addClass('long-transition') if longTransition
+      @$hourIndicator.add(@$minuteIndicator).add(@$dateIndicator).addClass('long-transition') if longTransition
       defer =>
         @updateTime()
         @isAnimatingHands = true
@@ -119,6 +125,11 @@ $ ->
 
     updateTime: =>
       time = @getTime()
+      @updateTimeAnalog(time) if @settings.analog
+      @updateTimeDigital(time) if @settings.digital
+      @updateTimer = setTimeout((=> @updateTime()), 200)
+
+    updateTimeAnalog: (time) =>
       $.each time, (key, val) =>
         $indicator = @["$#{key}Indicator"]
         multiplier = @settings["#{key}Multiplier"]
@@ -136,10 +147,6 @@ $ ->
                 defer => @updateIndicator($indicator, degree, multiplier)
           else
             @updateIndicator($indicator, degree, multiplier)
-
-      @updateTimer= setTimeout (=>
-                      @updateTime()
-                    ), 200
 
     updateIndicator: ($indicator, deg, multiplier) ->
       $indicator.css @prefixVendor('transform', "rotate(#{deg*multiplier}deg)")

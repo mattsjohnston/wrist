@@ -81,8 +81,10 @@
       function Clocker(elements, options) {
         this.elements = elements;
         this.options = options;
+        this.updateTimeAnalog = __bind(this.updateTimeAnalog, this);
         this.updateTime = __bind(this.updateTime, this);
         this.pause = __bind(this.pause, this);
+        this.playAnalog = __bind(this.playAnalog, this);
         this.play = __bind(this.play, this);
         this.setOffset = __bind(this.setOffset, this);
         this.init();
@@ -108,14 +110,16 @@
           _this = this;
 
         settings = {
-          dayIndicator: '.day-indicator',
+          dateIndicator: '.date-indicator',
           hourIndicator: '.hour-indicator',
           minuteIndicator: '.minute-indicator',
           secondIndicator: '.second-indicator',
           dayMultiplier: 1,
           hourMultiplier: 1,
           minuteMultiplier: 1,
-          secondMultiplier: 1
+          secondMultiplier: 1,
+          analog: true,
+          digital: false
         };
         this.settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
@@ -123,7 +127,7 @@
 
           _this.$ = $el = $(el);
           _this.$container = _this.$.parent();
-          _this.$dayIndicator = $el.find(settings.dayIndicator);
+          _this.$dateIndicator = $el.find(settings.dateIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);
           _this.$secondIndicator = $el.find(settings.secondIndicator);
@@ -139,17 +143,26 @@
       };
 
       Clocker.prototype.play = function(longTransition) {
-        var events,
-          _this = this;
-
         if (longTransition == null) {
           longTransition = true;
         }
         clearTimeout(this.updateTimer);
+        if (this.settings.analog) {
+          this.playAnalog(longTransition);
+        }
+        if (this.settings.digital) {
+          return this.playDigital();
+        }
+      };
+
+      Clocker.prototype.playAnalog = function(longTransition) {
+        var events,
+          _this = this;
+
         this.playState = 'playing';
         this.isAnimatingHands = false;
         if (longTransition) {
-          this.$hourIndicator.add(this.$minuteIndicator).add(this.$dayIndicator).addClass('long-transition');
+          this.$hourIndicator.add(this.$minuteIndicator).add(this.$dateIndicator).addClass('long-transition');
         }
         defer(function() {
           _this.updateTime();
@@ -174,7 +187,21 @@
           _this = this;
 
         time = this.getTime();
-        $.each(time, function(key, val) {
+        if (this.settings.analog) {
+          this.updateTimeAnalog(time);
+        }
+        if (this.settings.digital) {
+          this.updateTimeDigital(time);
+        }
+        return this.updateTimer = setTimeout((function() {
+          return _this.updateTime();
+        }), 200);
+      };
+
+      Clocker.prototype.updateTimeAnalog = function(time) {
+        var _this = this;
+
+        return $.each(time, function(key, val) {
           var $indicator, degree, multiplier;
 
           $indicator = _this["$" + key + "Indicator"];
@@ -201,9 +228,6 @@
             }
           }
         });
-        return this.updateTimer = setTimeout((function() {
-          return _this.updateTime();
-        }), 200);
       };
 
       Clocker.prototype.updateIndicator = function($indicator, deg, multiplier) {

@@ -138,3 +138,16 @@ Load paths:
 2013-10-07 23:01:11 overwrite javascripts/application.js
 2013-10-07 23:02:35 overwrite stylesheets/app.css 
 2013-10-07 23:04:47 overwrite javascripts/application.js
+2013-10-16 18:36:12 overwrite javascripts/application.js
+2013-10-16 18:36:31 overwrite javascripts/application.js
+2013-10-16 18:37:08 identical stylesheets/app.css 
+2013-10-16 18:38:43 overwrite javascripts/application.js
+2013-10-16 18:39:28 overwrite javascripts/application.js
+2013-10-16 18:42:32 overwrite javascripts/application.js
+2013-10-16 18:43:27     error coffeescripts/application.coffee: SyntaxError: unexpected {
+2013-10-16 18:43:27 overwrite javascripts/application.js
+2013-10-16 18:43:39 overwrite javascripts/application.js
+2013-10-16 18:46:20 overwrite javascripts/application.js
+2013-10-16 18:46:57 overwrite javascripts/application.js
+2013-10-16 18:47:24 overwrite javascripts/application.js
+2013-10-16 18:47:29 overwrite javascripts/application.js
