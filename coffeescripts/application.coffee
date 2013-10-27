@@ -20,7 +20,10 @@ $ ->
     hourIndicator: '.hour-indicator, .hour-shadow'
     secondIndicator: '.second-indicator, .second-shadow'
     minuteIndicator: '.minute-indicator, .minute-shadow'
-  watches.polygon = $('#polygon .svg-main').clocker dayMultiplier: -1
+  watches.polygon = $('#polygon .svg-main').clocker dateMultiplier: -1
+  watches.f91w = $('#f91w .svg-main').clocker
+    analog: false
+    digital: true
 
   # set the timezone offsets for the toggle
   offsets =
@@ -48,7 +51,10 @@ $ ->
     $el.parents('.timezones').find('li').removeClass('current')
     $el.parent().addClass('current')
     city = $el.attr('href').split('#')[1]
-    $.each watches, (i, watch) -> watch.setOffset offsets[city]
+    $.each watches, (i, watch) ->
+      watch.setOffset offsets[city]
+      console.log i
+
 
   $('.al').click (e) ->
     e.preventDefault
@@ -68,20 +74,25 @@ $ ->
     localOffset: (new Date()).getTimezoneOffset() / -60
     offsetTimezone: false
     isAnimatingHands: false
-    updateTimer = null
+    isAnimatingDigital: false
+    updateTimer: null
+    oldTime: new Date((new Date()).setHours(0, 0, 0))
+    firstPlay: true
 
     init: ->
       settings =
+        dayIndicator: '.day-indicator'
         dateIndicator: '.date-indicator'
         hourIndicator: '.hour-indicator'
         minuteIndicator: '.minute-indicator'
         secondIndicator: '.second-indicator'
-        dayMultiplier: 1
+        dateMultiplier: 1
         hourMultiplier: 1
         minuteMultiplier: 1
         secondMultiplier: 1
         analog: true
         digital: false
+        militaryTime: false
 
       # Merge default settings with options.
       @settings = $.extend settings, @options
@@ -89,6 +100,7 @@ $ ->
       @elements.each (i, el) =>
         @$ = $el = $(el)
         @$container = @$.parent()
+        @$dayIndicator = $el.find(settings.dayIndicator)
         @$dateIndicator = $el.find(settings.dateIndicator)
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
@@ -97,6 +109,7 @@ $ ->
 
     setOffset: (offset) =>
       if @offsetTimezone != offset && (offset || @offsetTimezone != @localOffset)
+        @oldTime = @getRawTime()
         @offsetTimezone = offset
         @play()
 
@@ -104,6 +117,57 @@ $ ->
       clearTimeout @updateTimer
       @playAnalog(longTransition) if @settings.analog
       @playDigital() if @settings.digital
+      @firstPlay = false
+
+    playDigital: (longTransition) =>
+      @playState = 'playing'
+      @animateDigital(@oldTime)
+
+    animateDigital: (startTime, callback) ->
+      duration = 3500
+      interval = 30
+      newTime = @getRawTime()
+      finished = 0
+      @isAnimatingDigital = true
+
+      callback = =>
+        @isAnimatingDigital = false
+        @updateTime()
+
+      stepAnimate = (current_time, start_value, end_value, total_time, step) =>
+        currentVal = Math.round start_value + (end_value - start_value) * jQuery.easing.easeInOutExpo(null, current_time, 0, 1, total_time)
+        step(currentVal)
+        if current_time > total_time
+          finished++
+          callback() if finished >= 3
+          return
+        setTimeout (=>
+          stepAnimate(current_time + interval, start_value, end_value, total_time, step)
+        ), interval
+
+      diff = newTime - startTime + duration
+      negative = diff < 0
+      startDay = startTime.getDay() * !@firstPlay + 7 * negative
+      endDay = newTime.getDay() + 7 * !negative
+      startDate = startTime.getDate() * !@firstPlay
+      endDate = newTime.getDate()
+      startHours = startTime.getHours() + 24 * negative
+      endHours = startHours + Math.floor(diff / (60*60*1000))
+      startMinutes = startTime.getMinutes() + 12 * 60 * negative
+      endMinutes = startMinutes + Math.floor(diff / (60*1000))
+      startSeconds = startTime.getSeconds() + 12 * 60 * 60 * negative
+      endSeconds = startSeconds + (Math.floor(diff / 1000) % 60) + (endMinutes - endMinutes % 60) + 480
+      stepAnimate 0, startDay, endDay, duration, (val) =>
+        @updateIndicatorDigital(@$dayIndicator, @dayNames[val % 7])
+      stepAnimate 0, startDate, endDate, duration, (val) =>
+        @updateIndicatorDigital @$dateIndicator, val
+      stepAnimate 0, startHours, endHours, duration, (val) =>
+        @updateMeridiem(val)
+        @updateIndicatorDigital @$hourIndicator, val % 12 || 12
+      stepAnimate 0, startMinutes, endMinutes, duration, (val) =>
+        @updateIndicatorDigital @$minuteIndicator, val % 60
+      stepAnimate 0, startSeconds, endSeconds, duration, (val) =>
+        @updateIndicatorDigital @$secondIndicator, val % 60
 
     playAnalog: (longTransition) =>
       @playState = 'playing'
@@ -129,6 +193,27 @@ $ ->
       @updateTimeDigital(time) if @settings.digital
       @updateTimer = setTimeout((=> @updateTime()), 200)
 
+    updateTimeDigital: (time) =>
+      unless @isAnimatingDigital
+        $.each time, (key, val) =>
+          $indicator = @["$#{key}Indicator"]
+          if key == 'day'
+            value = @dayNames[val.val]
+          else
+            value = val.val
+          @updateIndicatorDigital($indicator, value)
+
+    updateMeridiem: (hour) =>
+      @$.removeClass 'meridiem-am meridiem-pm'
+      newMeridiem = if Math.floor(hour/12) % 2 == 0 then 'am' else 'pm'
+      @$.addClass "meridiem-#{newMeridiem}"
+
+    updateIndicatorDigital: ($indicator, val) ->
+      for className in $indicator.attr('class').split(' ')
+        if className.match(/digit-val-.+/)
+          $indicator.removeClass className
+      $indicator.addClass("digit-val-#{val}")
+
     updateTimeAnalog: (time) =>
       $.each time, (key, val) =>
         $indicator = @["$#{key}Indicator"]
@@ -141,23 +226,29 @@ $ ->
             @["#{key}Loop"] = degree
             $indicator.addClass('no-transition')
             defer =>
-              @updateIndicator($indicator, 0, 1)
+              @updateIndicatorAnalog($indicator, 0, 1)
               defer =>
                 $indicator.removeClass 'no-transition'
-                defer => @updateIndicator($indicator, degree, multiplier)
+                defer => @updateIndicatorAnalog($indicator, degree, multiplier)
           else
-            @updateIndicator($indicator, degree, multiplier)
+            @updateIndicatorAnalog($indicator, degree, multiplier)
 
-    updateIndicator: ($indicator, deg, multiplier) ->
+    updateIndicatorAnalog: ($indicator, deg, multiplier) ->
       $indicator.css @prefixVendor('transform', "rotate(#{deg*multiplier}deg)")
 
-    getTime: ->
+    getRawTime: =>
       now = new Date()
 
       if @offsetTimezone != false
         utc = now.getTime() + now.getTimezoneOffset() * 60000
         now = new Date(utc + 3600000 * @offsetTimezone)
 
+      return now
+
+    getTime: =>
+      now = @getRawTime()
+
+      day = now.getDay()
       d = now.getDate()
       h = now.getHours()
       m = now.getMinutes()
@@ -170,8 +261,14 @@ $ ->
 
       exactM = exactM + h*60
 
+      if @settings.digital && !@settings.militaryTime
+        h = h % 12 || 12
+
       time =
         day:
+          val: day
+          deg: @valToDeg(day, 7)
+        date:
           val: d
           deg: @valToDeg(d-1, 31)
         hour:
@@ -185,6 +282,8 @@ $ ->
         second:
           val: s
           deg: @valToDeg(s, 60)
+
+    dayNames: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 
     # Takes a value to be converted, and the total
     # number, which represents 360 degrees.
@@ -252,7 +351,6 @@ $ ->
         success: mce_success_cb
 
       $signupForm.ajaxForm options
-
 
   mce_success_cb = (resp) ->
     if resp.result is "success"

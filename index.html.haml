@@ -28,10 +28,23 @@
   %body
     = render :partial => 'nav'
     #awwwards.right.white.ribbon
-      %a{href: "http://www.awwwards.com", target: "_blank"} best websites of the world
+      %a{href: "http://www.awwwards.com/best-websites/wrist", target: "_blank"} best websites of the world
     #cssda.ribbon
       %a{href: 'http://www.cssdesignawards.com/css-web-design-award-winner.php?id=23245', target: '_blank'}
         %img{src: 'images/ribbons/awarded-ss-rhs.svg'}
+    %section.watch.watch-digital#f91w
+      = render :partial => 'watches/f91w'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 F-91W
+            %ul.info-list
+              %li
+                %span.key Maker
+                %a.value{:href => 'http://www.casio-usa.com/products/Watches/Classic/F91W-1/', :target => '_blank'} Casio
+              %li
+                %span.key Posted
+                %span.value Oct. 8th, 2013
     %section.watch#polygon
       = render :partial => 'watches/polygon'
       .watch-info
@@ -143,6 +156,7 @@
     %script{:src => "javascripts/vendor/jquery-1.10.2.js"}
     %script{:src => "javascripts/vendor/jquery.svg.js"}
     %script{:src => "javascripts/vendor/jquery.svgdom.js"}
+    %script{:src => "javascripts/vendor/jquery.easing.1.3.js"}
 
     %script{:src => "javascripts/vendor/foundation/foundation.js"}
     %script{:src => "javascripts/vendor/foundation/foundation.tooltips.js"}

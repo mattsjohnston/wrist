@@ -3,7 +3,6 @@
 
   $(function() {
     var $signupForm, offsets, toggleVisibleWatches, watches;
-
     $(document).foundation();
     if (Modernizr.is_mobile) {
       defer(function() {
@@ -29,7 +28,11 @@
       minuteIndicator: '.minute-indicator, .minute-shadow'
     });
     watches.polygon = $('#polygon .svg-main').clocker({
-      dayMultiplier: -1
+      dateMultiplier: -1
+    });
+    watches.f91w = $('#f91w .svg-main').clocker({
+      analog: false,
+      digital: true
     });
     offsets = {
       local: false,
@@ -52,19 +55,18 @@
     $(document).on('scroll', toggleVisibleWatches);
     $('.timezones li a').click(function(e) {
       var $el, city;
-
       e.preventDefault();
       $el = $(e.target);
       $el.parents('.timezones').find('li').removeClass('current');
       $el.parent().addClass('current');
       city = $el.attr('href').split('#')[1];
       return $.each(watches, function(i, watch) {
-        return watch.setOffset(offsets[city]);
+        watch.setOffset(offsets[city]);
+        return console.log(i);
       });
     });
     return $('.al').click(function(e) {
       var anchor;
-
       e.preventDefault;
       anchor = $(e.target).attr('href');
       $.scrollTo($(anchor).offset().top, 1000);
@@ -74,17 +76,19 @@
 
   (function($) {
     var Clocker, defer;
-
     Clocker = (function() {
-      var updateTimer;
-
       function Clocker(elements, options) {
         this.elements = elements;
         this.options = options;
+        this.getTime = __bind(this.getTime, this);
+        this.getRawTime = __bind(this.getRawTime, this);
         this.updateTimeAnalog = __bind(this.updateTimeAnalog, this);
+        this.updateMeridiem = __bind(this.updateMeridiem, this);
+        this.updateTimeDigital = __bind(this.updateTimeDigital, this);
         this.updateTime = __bind(this.updateTime, this);
         this.pause = __bind(this.pause, this);
         this.playAnalog = __bind(this.playAnalog, this);
+        this.playDigital = __bind(this.playDigital, this);
         this.play = __bind(this.play, this);
         this.setOffset = __bind(this.setOffset, this);
         this.init();
@@ -103,30 +107,37 @@
 
       Clocker.prototype.isAnimatingHands = false;
 
-      updateTimer = null;
+      Clocker.prototype.isAnimatingDigital = false;
+
+      Clocker.prototype.updateTimer = null;
+
+      Clocker.prototype.oldTime = new Date((new Date()).setHours(0, 0, 0));
+
+      Clocker.prototype.firstPlay = true;
 
       Clocker.prototype.init = function() {
         var settings,
           _this = this;
-
         settings = {
+          dayIndicator: '.day-indicator',
           dateIndicator: '.date-indicator',
           hourIndicator: '.hour-indicator',
           minuteIndicator: '.minute-indicator',
           secondIndicator: '.second-indicator',
-          dayMultiplier: 1,
+          dateMultiplier: 1,
           hourMultiplier: 1,
           minuteMultiplier: 1,
           secondMultiplier: 1,
           analog: true,
-          digital: false
+          digital: false,
+          militaryTime: false
         };
         this.settings = $.extend(settings, this.options);
         return this.elements.each(function(i, el) {
           var $el;
-
           _this.$ = $el = $(el);
           _this.$container = _this.$.parent();
+          _this.$dayIndicator = $el.find(settings.dayIndicator);
           _this.$dateIndicator = $el.find(settings.dateIndicator);
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);
@@ -137,6 +148,7 @@
 
       Clocker.prototype.setOffset = function(offset) {
         if (this.offsetTimezone !== offset && (offset || this.offsetTimezone !== this.localOffset)) {
+          this.oldTime = this.getRawTime();
           this.offsetTimezone = offset;
           return this.play();
         }
@@ -151,14 +163,76 @@
           this.playAnalog(longTransition);
         }
         if (this.settings.digital) {
-          return this.playDigital();
+          this.playDigital();
         }
+        return this.firstPlay = false;
+      };
+
+      Clocker.prototype.playDigital = function(longTransition) {
+        this.playState = 'playing';
+        return this.animateDigital(this.oldTime);
+      };
+
+      Clocker.prototype.animateDigital = function(startTime, callback) {
+        var diff, duration, endDate, endDay, endHours, endMinutes, endSeconds, finished, interval, negative, newTime, startDate, startDay, startHours, startMinutes, startSeconds, stepAnimate,
+          _this = this;
+        duration = 3500;
+        interval = 30;
+        newTime = this.getRawTime();
+        finished = 0;
+        this.isAnimatingDigital = true;
+        callback = function() {
+          _this.isAnimatingDigital = false;
+          return _this.updateTime();
+        };
+        stepAnimate = function(current_time, start_value, end_value, total_time, step) {
+          var currentVal;
+          currentVal = Math.round(start_value + (end_value - start_value) * jQuery.easing.easeInOutExpo(null, current_time, 0, 1, total_time));
+          step(currentVal);
+          if (current_time > total_time) {
+            finished++;
+            if (finished >= 3) {
+              callback();
+            }
+            return;
+          }
+          return setTimeout((function() {
+            return stepAnimate(current_time + interval, start_value, end_value, total_time, step);
+          }), interval);
+        };
+        diff = newTime - startTime + duration;
+        negative = diff < 0;
+        startDay = startTime.getDay() * !this.firstPlay + 7 * negative;
+        endDay = newTime.getDay() + 7 * !negative;
+        startDate = startTime.getDate() * !this.firstPlay;
+        endDate = newTime.getDate();
+        startHours = startTime.getHours() + 24 * negative;
+        endHours = startHours + Math.floor(diff / (60 * 60 * 1000));
+        startMinutes = startTime.getMinutes() + 12 * 60 * negative;
+        endMinutes = startMinutes + Math.floor(diff / (60 * 1000));
+        startSeconds = startTime.getSeconds() + 12 * 60 * 60 * negative;
+        endSeconds = startSeconds + (Math.floor(diff / 1000) % 60) + (endMinutes - endMinutes % 60) + 480;
+        stepAnimate(0, startDay, endDay, duration, function(val) {
+          return _this.updateIndicatorDigital(_this.$dayIndicator, _this.dayNames[val % 7]);
+        });
+        stepAnimate(0, startDate, endDate, duration, function(val) {
+          return _this.updateIndicatorDigital(_this.$dateIndicator, val);
+        });
+        stepAnimate(0, startHours, endHours, duration, function(val) {
+          _this.updateMeridiem(val);
+          return _this.updateIndicatorDigital(_this.$hourIndicator, val % 12 || 12);
+        });
+        stepAnimate(0, startMinutes, endMinutes, duration, function(val) {
+          return _this.updateIndicatorDigital(_this.$minuteIndicator, val % 60);
+        });
+        return stepAnimate(0, startSeconds, endSeconds, duration, function(val) {
+          return _this.updateIndicatorDigital(_this.$secondIndicator, val % 60);
+        });
       };
 
       Clocker.prototype.playAnalog = function(longTransition) {
         var events,
           _this = this;
-
         this.playState = 'playing';
         this.isAnimatingHands = false;
         if (longTransition) {
@@ -185,7 +259,6 @@
       Clocker.prototype.updateTime = function() {
         var time,
           _this = this;
-
         time = this.getTime();
         if (this.settings.analog) {
           this.updateTimeAnalog(time);
@@ -198,12 +271,45 @@
         }), 200);
       };
 
+      Clocker.prototype.updateTimeDigital = function(time) {
+        var _this = this;
+        if (!this.isAnimatingDigital) {
+          return $.each(time, function(key, val) {
+            var $indicator, value;
+            $indicator = _this["$" + key + "Indicator"];
+            if (key === 'day') {
+              value = _this.dayNames[val.val];
+            } else {
+              value = val.val;
+            }
+            return _this.updateIndicatorDigital($indicator, value);
+          });
+        }
+      };
+
+      Clocker.prototype.updateMeridiem = function(hour) {
+        var newMeridiem;
+        this.$.removeClass('meridiem-am meridiem-pm');
+        newMeridiem = Math.floor(hour / 12) % 2 === 0 ? 'am' : 'pm';
+        return this.$.addClass("meridiem-" + newMeridiem);
+      };
+
+      Clocker.prototype.updateIndicatorDigital = function($indicator, val) {
+        var className, _i, _len, _ref;
+        _ref = $indicator.attr('class').split(' ');
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          className = _ref[_i];
+          if (className.match(/digit-val-.+/)) {
+            $indicator.removeClass(className);
+          }
+        }
+        return $indicator.addClass("digit-val-" + val);
+      };
+
       Clocker.prototype.updateTimeAnalog = function(time) {
         var _this = this;
-
         return $.each(time, function(key, val) {
           var $indicator, degree, multiplier;
-
           $indicator = _this["$" + key + "Indicator"];
           multiplier = _this.settings["" + key + "Multiplier"];
           degree = val.exactDeg || val.deg;
@@ -215,33 +321,39 @@
               _this["" + key + "Loop"] = degree;
               $indicator.addClass('no-transition');
               return defer(function() {
-                _this.updateIndicator($indicator, 0, 1);
+                _this.updateIndicatorAnalog($indicator, 0, 1);
                 return defer(function() {
                   $indicator.removeClass('no-transition');
                   return defer(function() {
-                    return _this.updateIndicator($indicator, degree, multiplier);
+                    return _this.updateIndicatorAnalog($indicator, degree, multiplier);
                   });
                 });
               });
             } else {
-              return _this.updateIndicator($indicator, degree, multiplier);
+              return _this.updateIndicatorAnalog($indicator, degree, multiplier);
             }
           }
         });
       };
 
-      Clocker.prototype.updateIndicator = function($indicator, deg, multiplier) {
+      Clocker.prototype.updateIndicatorAnalog = function($indicator, deg, multiplier) {
         return $indicator.css(this.prefixVendor('transform', "rotate(" + (deg * multiplier) + "deg)"));
       };
 
-      Clocker.prototype.getTime = function() {
-        var d, exactH, exactM, exactS, h, m, mil, now, s, time, utc;
-
+      Clocker.prototype.getRawTime = function() {
+        var now, utc;
         now = new Date();
         if (this.offsetTimezone !== false) {
           utc = now.getTime() + now.getTimezoneOffset() * 60000;
           now = new Date(utc + 3600000 * this.offsetTimezone);
         }
+        return now;
+      };
+
+      Clocker.prototype.getTime = function() {
+        var d, day, exactH, exactM, exactS, h, m, mil, now, s, time;
+        now = this.getRawTime();
+        day = now.getDay();
         d = now.getDate();
         h = now.getHours();
         m = now.getMinutes();
@@ -251,8 +363,15 @@
         exactM = m + exactS / 60;
         exactH = h + exactM / 60;
         exactM = exactM + h * 60;
+        if (this.settings.digital && !this.settings.militaryTime) {
+          h = h % 12 || 12;
+        }
         return time = {
           day: {
+            val: day,
+            deg: this.valToDeg(day, 7)
+          },
+          date: {
             val: d,
             deg: this.valToDeg(d - 1, 31)
           },
@@ -273,13 +392,14 @@
         };
       };
 
+      Clocker.prototype.dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+
       Clocker.prototype.valToDeg = function(val, total) {
         return (360 * val / total) || 360;
       };
 
       Clocker.prototype.prefixVendor = function(property, val) {
         var prefix, properties, _fn, _i, _len, _ref;
-
         properties = {
           property: val
         };
@@ -304,7 +424,6 @@
     };
     return jQuery.fn.clocker = function(options) {
       var clocker;
-
       clocker = new Clocker(this, options);
       return clocker;
     };
@@ -312,10 +431,8 @@
 
   (function() {
     var fnames, ftypes, head, mce_init_form, mce_preload_check, mce_preload_checks, mce_success_cb;
-
     mce_preload_check = function() {
       var err, script, validatorLoaded;
-
       if (mce_preload_checks > 40) {
         return;
       }
@@ -338,7 +455,6 @@
     mce_init_form = function() {
       return $(function() {
         var $signupForm, mce_validator, options;
-
         $signupForm = $('#signup-form');
         options = {
           errorClass: "mce_inline_error",
@@ -361,7 +477,6 @@
     };
     mce_success_cb = function(resp) {
       var e, i, index, msg, parts;
-
       if (resp.result === "success") {
         return $('#signup-form').parent().addClass('submitted');
       } else {
