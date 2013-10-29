@@ -36,7 +36,7 @@ $ ->
     $.each watches, (i, watch) ->
       if watch.$container.visible(true)
         if watch.playState != 'playing'
-          watch.play()
+          watch.play(false)
           # watch.$container.removeClass 'hidden'
       else if watch.playState != 'paused'
         watch.pause()
@@ -53,8 +53,7 @@ $ ->
     city = $el.attr('href').split('#')[1]
     $.each watches, (i, watch) ->
       watch.setOffset offsets[city]
-      console.log i
-
+      return
 
   $('.al').click (e) ->
     e.preventDefault
@@ -105,7 +104,7 @@ $ ->
         @$hourIndicator = $el.find(settings.hourIndicator)
         @$minuteIndicator = $el.find(settings.minuteIndicator)
         @$secondIndicator = $el.find(settings.secondIndicator)
-        @play(false)
+        @play()
 
     setOffset: (offset) =>
       if @offsetTimezone != offset && (offset || @offsetTimezone != @localOffset)
@@ -116,12 +115,15 @@ $ ->
     play: (longTransition = true) =>
       clearTimeout @updateTimer
       @playAnalog(longTransition) if @settings.analog
-      @playDigital() if @settings.digital
+      @playDigital(longTransition) if @settings.digital
       @firstPlay = false
 
     playDigital: (longTransition) =>
-      @playState = 'playing'
-      @animateDigital(@oldTime)
+      if longTransition
+        @playState = 'playing'
+        @animateDigital(@oldTime)
+      else
+        @updateTime()
 
     animateDigital: (startTime, callback) ->
       duration = 3500
@@ -238,11 +240,10 @@ $ ->
 
     getRawTime: =>
       now = new Date()
-
       if @offsetTimezone != false
         utc = now.getTime() + now.getTimezoneOffset() * 60000
         now = new Date(utc + 3600000 * @offsetTimezone)
-
+      @oldTime = now
       return now
 
     getTime: =>

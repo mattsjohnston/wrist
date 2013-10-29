@@ -44,7 +44,7 @@
       return $.each(watches, function(i, watch) {
         if (watch.$container.visible(true)) {
           if (watch.playState !== 'playing') {
-            return watch.play();
+            return watch.play(false);
           }
         } else if (watch.playState !== 'paused') {
           return watch.pause();
@@ -62,7 +62,6 @@
       city = $el.attr('href').split('#')[1];
       return $.each(watches, function(i, watch) {
         watch.setOffset(offsets[city]);
-        return console.log(i);
       });
     });
     return $('.al').click(function(e) {
@@ -142,7 +141,7 @@
           _this.$hourIndicator = $el.find(settings.hourIndicator);
           _this.$minuteIndicator = $el.find(settings.minuteIndicator);
           _this.$secondIndicator = $el.find(settings.secondIndicator);
-          return _this.play(false);
+          return _this.play();
         });
       };
 
@@ -163,14 +162,18 @@
           this.playAnalog(longTransition);
         }
         if (this.settings.digital) {
-          this.playDigital();
+          this.playDigital(longTransition);
         }
         return this.firstPlay = false;
       };
 
       Clocker.prototype.playDigital = function(longTransition) {
-        this.playState = 'playing';
-        return this.animateDigital(this.oldTime);
+        if (longTransition) {
+          this.playState = 'playing';
+          return this.animateDigital(this.oldTime);
+        } else {
+          return this.updateTime();
+        }
       };
 
       Clocker.prototype.animateDigital = function(startTime, callback) {
@@ -347,6 +350,7 @@
           utc = now.getTime() + now.getTimezoneOffset() * 60000;
           now = new Date(utc + 3600000 * this.offsetTimezone);
         }
+        this.oldTime = now;
         return now;
       };
 
