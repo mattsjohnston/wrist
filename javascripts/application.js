@@ -205,10 +205,10 @@
         };
         diff = newTime - startTime + duration;
         negative = diff < 0;
-        startDay = startTime.getDay() * !this.firstPlay + 7 * negative;
-        endDay = newTime.getDay() + 7 * !negative;
         startDate = startTime.getDate() * !this.firstPlay;
         endDate = newTime.getDate();
+        startDay = startTime.getDay() * !this.firstPlay + 7 * negative;
+        endDay = startDay + (endDate - startDate);
         startHours = startTime.getHours() + 24 * negative;
         endHours = startHours + Math.floor(diff / (60 * 60 * 1000));
         startMinutes = startTime.getMinutes() + 12 * 60 * negative;
