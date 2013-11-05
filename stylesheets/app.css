@@ -7869,7 +7869,15 @@ footer .twitter-follow-button, footer .twitter-share-button {
 #f91w {
   background-color: #e8e8e8;
 }
-/* line 6, ../sass/watches/_f91w.sass */
+/* line 4, ../sass/watches/_f91w.sass */
+#f91w .svg-main .second-indicator, #f91w .svg-main .minute-indicator, #f91w .svg-main .hour-indicator, #f91w .svg-main .date-indicator {
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+/* line 7, ../sass/watches/_f91w.sass */
 #f91w .watch-info h3 {
   color: black;
 }
