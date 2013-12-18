@@ -229,3 +229,66 @@
 2013-12-06 10:20:44    remove stylesheets/app.css 
 2013-12-06 10:20:44    create javascripts/application.js
 2013-12-06 10:21:00    create stylesheets/app.css 
+2013-12-18 09:12:08 identical stylesheets/app.css 
+2013-12-18 09:13:32 overwrite stylesheets/app.css 
+2013-12-18 09:15:51 identical stylesheets/app.css 
+2013-12-18 09:20:42 identical stylesheets/app.css 
+2013-12-18 09:21:49 identical stylesheets/app.css 
+2013-12-18 09:23:42 overwrite stylesheets/app.css 
+2013-12-18 09:25:49 overwrite stylesheets/app.css 
+2013-12-18 09:35:23 overwrite stylesheets/app.css 
+2013-12-18 09:35:50 overwrite stylesheets/app.css 
+2013-12-18 09:36:49 overwrite stylesheets/app.css 
+2013-12-18 09:36:58     error sass/app.sass (Line 26: File to import not found or unreadable: watches/gownandoars_203series.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-12-18 09:36:58 overwrite stylesheets/app.css 
+2013-12-18 09:37:01     error sass/app.sass (Line 26: File to import not found or unreadable: watches/gownandoars_203series.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-12-18 09:37:01 identical stylesheets/app.css 
+2013-12-18 09:37:04     error sass/app.sass (Line 26: File to import not found or unreadable: watches/gownandoars_203series.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-12-18 09:37:04 identical stylesheets/app.css 
+2013-12-18 09:37:06     error sass/app.sass (Line 26: File to import not found or unreadable: watches/gownandoars_203series.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2013-12-18 09:37:06 identical stylesheets/app.css 
+2013-12-18 09:38:51 overwrite stylesheets/app.css 
+2013-12-18 09:40:24 overwrite javascripts/application.js
+2013-12-18 09:42:47 overwrite stylesheets/app.css 
+2013-12-18 09:43:35 overwrite stylesheets/app.css 
+2013-12-18 09:52:55 overwrite stylesheets/app.css 
+2013-12-18 09:55:21 overwrite stylesheets/app.css 
+2013-12-18 09:56:43 overwrite stylesheets/app.css 
+2013-12-18 10:14:22 overwrite stylesheets/app.css 
+2013-12-18 10:14:44 overwrite stylesheets/app.css 
+2013-12-18 10:20:56 overwrite stylesheets/app.css 
+2013-12-18 10:21:55 overwrite stylesheets/app.css 
+2013-12-18 10:22:19 overwrite stylesheets/app.css 
+2013-12-18 10:24:34 overwrite stylesheets/app.css 

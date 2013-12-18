@@ -34,6 +34,7 @@
       analog: false,
       digital: true
     });
+    watches.theFitz = $('#gownandoars-thefitz .svg-main').clocker();
     offsets = {
       local: false,
       london: 1,
