@@ -229,3 +229,4 @@
 2013-12-06 10:20:44    remove stylesheets/app.css 
 2013-12-06 10:20:44    create javascripts/application.js
 2013-12-06 10:21:00    create stylesheets/app.css 
+2013-12-18 23:25:05 overwrite javascripts/application.js
