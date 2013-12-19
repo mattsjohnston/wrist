@@ -24,6 +24,7 @@ $ ->
   watches.f91w = $('#f91w .svg-main').clocker
     analog: false
     digital: true
+  watches.theFitz = $('#gownandoars-thefitz .svg-main').clocker()
 
   # set the timezone offsets for the toggle
   offsets =

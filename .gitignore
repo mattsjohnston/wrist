@@ -1,2 +1,3 @@
 /.sass-cache
-/.coffeescript-cache
+/.coffeescript-cache/*
+/fire_app_log.txt

@@ -32,6 +32,19 @@
     #cssda.ribbon
       %a{href: 'http://www.cssdesignawards.com/css-web-design-award-winner.php?id=23245', target: '_blank'}
         %img{src: 'images/ribbons/awarded-ss-rhs.svg'}
+    %section.watch#gownandoars-thefitz
+      = render :partial => 'watches/gownandoars_thefitz'
+      .watch-info
+        .row
+          .large-5.columns
+            %h3 The Fitz
+            %ul.info-list
+              %li
+                %span.key Maker
+                %a.value{:href => 'http://www.gownandoars.com/products/fitz', :target => '_blank'} Gown & Oars
+              %li
+                %span.key Posted
+                %span.value Dec. 18th, 2013
     %section.watch.watch-digital#f91w
       = render :partial => 'watches/f91w'
       .watch-info

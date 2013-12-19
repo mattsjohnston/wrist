@@ -7881,3 +7881,12 @@ footer .twitter-follow-button, footer .twitter-share-button {
 #f91w .watch-info h3 {
   color: black;
 }
+
+/* line 1, ../sass/watches/_gownandoars_thefitz.sass */
+#gownandoars-thefitz {
+  background-color: #f5cfb3;
+}
+/* line 6, ../sass/watches/_gownandoars_thefitz.sass */
+#gownandoars-thefitz .watch-info h3 {
+  color: rgba(0, 0, 0, 0.7);
+}
