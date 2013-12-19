@@ -292,3 +292,4 @@ Load paths:
 2013-12-18 10:21:55 overwrite stylesheets/app.css 
 2013-12-18 10:22:19 overwrite stylesheets/app.css 
 2013-12-18 10:24:34 overwrite stylesheets/app.css 
+2013-12-18 23:25:58 overwrite javascripts/application.js
