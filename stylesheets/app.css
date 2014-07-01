@@ -7890,3 +7890,12 @@ footer .twitter-follow-button, footer .twitter-share-button {
 #gownandoars-thefitz .watch-info h3 {
   color: rgba(0, 0, 0, 0.7);
 }
+
+/* line 1, ../sass/watches/_avi8_4001_01.sass */
+#avi8-4001-01 {
+  background-color: #cff4ff;
+}
+/* line 6, ../sass/watches/_avi8_4001_01.sass */
+#avi8-4001-01 .watch-info h3 {
+  color: rgba(0, 0, 0, 0.7);
+}

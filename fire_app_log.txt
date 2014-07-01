@@ -236,3 +236,67 @@
 2014-06-01 17:52:31    remove stylesheets/app.css 
 2014-06-01 17:52:31    create javascripts/application.js
 2014-06-01 17:52:48    create stylesheets/app.css 
+2014-06-30 18:56:46     error coffeescripts/application.coffee: SyntaxError: unexpected NUMBER
+2014-06-30 18:56:46 overwrite javascripts/application.js
+2014-06-30 18:57:11 overwrite javascripts/application.js
+2014-06-30 19:09:05     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:05 overwrite stylesheets/app.css 
+2014-06-30 19:09:13     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:13 identical stylesheets/app.css 
+2014-06-30 19:09:29     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:29 overwrite stylesheets/app.css 
+2014-06-30 19:09:34     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:34 identical stylesheets/app.css 
+2014-06-30 19:09:40     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:40 overwrite stylesheets/app.css 
+2014-06-30 19:09:46     error sass/app.sass (Line 27: File to import not found or unreadable: watches/av8_4001_01.
+Load paths:
+  /Users/mattjohnston/Sites/Watches/dev/Wrist/sass
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/blueprint/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/compass-0.12.2/frameworks/compass/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/bootstrap-sass-2.3.2.2/vendor/assets/stylesheets
+  /Users/mattjohnston/.rvm/gems/ruby-2.0.0-p195/gems/zurb-foundation-4.3.2/scss
+  Compass::SpriteImporter
+  /vendor/assets/stylesheets)
+2014-06-30 19:09:46 identical stylesheets/app.css 
+2014-06-30 19:10:09 overwrite stylesheets/app.css 
