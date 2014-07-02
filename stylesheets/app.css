@@ -7488,29 +7488,32 @@ p {
 /* line 1, ../sass/components/_footer.sass */
 footer {
   background: white;
-  padding: 12px 0;
+  padding: 9px 0 5px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
-/* line 4, ../sass/components/_footer.sass */
+/* line 7, ../sass/components/_footer.sass */
 footer .copyright {
   font-size: 12px;
   margin: 0;
   color: #aaaaaa;
 }
-/* line 8, ../sass/components/_footer.sass */
+/* line 11, ../sass/components/_footer.sass */
 footer .twitter-follow-button, footer .twitter-share-button {
   float: right;
 }
 
 @media (max-width: 768px) {
-  /* line 12, ../sass/components/_footer.sass */
+  /* line 15, ../sass/components/_footer.sass */
   footer {
     text-align: center;
   }
-  /* line 14, ../sass/components/_footer.sass */
+  /* line 17, ../sass/components/_footer.sass */
   footer p {
     margin-bottom: 10px;
   }
-  /* line 16, ../sass/components/_footer.sass */
+  /* line 19, ../sass/components/_footer.sass */
   footer .twitter-follow-button, footer .twitter-share-button {
     float: none;
   }
