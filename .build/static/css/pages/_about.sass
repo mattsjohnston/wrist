@@ -1,0 +1,95 @@
+#about
+  padding: 124px 0
+  background-color: #3dcabe
+  hr.dots
+    border: none
+    height: 9px
+    background: url('../images/about-dots.png') no-repeat center top
+  h2
+    text-align: center
+    margin: 83px 0
+  p
+    margin: 3.5em 0
+    color: #bffffa
+    text-align: justify
+    text-justify: inter-word
+    a
+      color: #fff
+      display: inline-block
+      border-bottom: 1px dashed #82ded6
+      +transition(.2s all)
+      &:hover
+        border-bottom-color: #fff
+
+  .form-container
+    border-radius: 4px
+    height: 60px
+    margin: 83px 0 0
+    #signup-form
+      height: 60px
+      border-radius: 4px
+      box-shadow: 0 4px 0px 2px rgba(#000, .06)
+      button
+        width: 38%
+        height: 60px
+        background: #78d6b1
+        display: block
+        border: none
+        padding: 0 10px
+        text-align: center
+
+        font-size: 16px
+        line-height: 1.3em
+        text-transform: uppercase
+
+        +border-right-radius(4px)
+        box-shadow: none
+        &:hover
+          background-color: #42d39b
+
+      input[type=email]
+        width: 62%
+        height: 60px
+        background: #fff
+        margin: 0
+        padding: 20px
+        border-radius: 0
+        float: left
+        border: none
+
+        font-size: 19px
+        font-weight: 700
+
+        +border-left-radius(4px)
+        box-shadow: none
+
+        +input-placeholder
+          color: #d6d6d6
+
+        &:focus + button
+          content: 'Do it...'
+
+      button:hover
+        content: 'You got this'
+
+      &.focusing
+        +animation(form-bounce 3s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite both)
+    &.submitted
+      background: #4ed4c9 url('../images/happy-face.gif') no-repeat center center
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+        background-image: url('../images/happy-face-hd.gif')
+        background-size: 39px 39px
+      #signup-form
+        display: none
+
+$range: 8px
++keyframes(form-bounce)
+  0%
+    box-shadow: 0 4px 0px 2px rgba(#000, .06)
+    +transform(translateY(0px))
+  50%
+    box-shadow: 0 (4px + $range) 0px 2px rgba(#000, .02)
+    +transform(translateY(-$range))
+  100%
+    box-shadow: 0 4px 0px 2px rgba(#000, .06)
+    +transform(translateY(0px))
