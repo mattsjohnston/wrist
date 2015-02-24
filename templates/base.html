@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]> ><! <![endif]-->
+<html class='no-js' lang='en'>
+  <!-- <![endif] -->
+  <head>
+    <meta charset='utf-8' />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta content='width=device-width' name='viewport' />
+    <title>Wrist | A bi-weekly illustrative exercise by Matt Johnston in making new and old watches come to life.</title>
+    <!-- Included CSS Files -->
+
+	<link rel="shortcut icon" href="{% static '/images/favicon.ico' %}">
+	<link rel="stylesheet" href="{% static '/css/app.css' %}">
+
+    <script src="{% static '/js/vendor/modernizr.js' %}"></script>
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type='text/javascript'>
+      //<![CDATA[
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        
+        ga('create', 'UA-29828542-2', 'wrist.im');
+        ga('send', 'pageview');
+      //]]>
+    </script>
+  </head>
+  <body>
+    {% include "_nav.html" %}
+
+    <div class='right white ribbon' id='awwwards'>
+      <a href='http://www.awwwards.com/best-websites/wrist' target='_blank'>best websites of the world</a>
+    </div>
+    <div class='ribbon' id='cssda'>
+      <a href='http://www.cssdesignawards.com/css-web-design-award-winner.php?id=23245' target='_blank'>
+      <img src="{% static 'images/ribbons/awarded-ss-rhs.svg' %}" />
+      </a>
+    </div>
+    
+        
+    {% block content %}
+      Content block
+    {% endblock %}
+
+
+    <section id='about'>
+      <hr class='dots' />
+      <div class='row'>
+        <div class='large-8 large-centered small-12 columns'>
+          <h2>About Wrist</h2>
+          <p>Wrist is a bi-weekly illustrative exercise to explore typography, colors, clock mechanics, and everything else that goes into watch design. Starting with one of my watches, I will be illustrating existing watches as well as exploring new watch designs.</p>
+          <p>
+            I’m a
+            <a href='http://dribbble.com/mattsjohnston' target='_blank'>designer</a>
+            and
+            <a href='http://github.com/mattsjohnston' target='_blank'>developer</a>
+            living in South Bay with my wonderful wife, Natalie, and working in Los Gatos at Netflix.
+          </p>
+          <h4 class='text-center'>Prints</h4>
+          <p>Like the illustrations on Wrist? Help support Wrist and add some class to your office. Check out the prints for all the watches on our <a href='http://society6.com/mattsjohnston' target='_blank'>store</a>.</p>
+          <div class='form-container'>
+            <form action='http://catalytic-design.us2.list-manage.com/subscribe/post?u=e9312d1e7264ab780493019da&amp;id=26b7366e0d' id='signup-form' method='post' target='_blank'>
+              <input id='mce-EMAIL' name='EMAIL' placeholder='Enter your email' required='' type='email' />
+              <button name='submit' type='submit'>Get the newsletter</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class='row'>
+        <div class='large-6 columns'> 
+          <p class='copyright show-for-large-up'>Designs & Code &copy; 2013 Matt Johnston</p>
+        </div>
+        <div class='large-6 columns'>
+          <a class='twitter-follow-button' data-show-count='false' href='https://twitter.com/wristfeed'>Follow @wristfeed</a>
+          <script type='text/javascript'>
+            //<![CDATA[
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            //]]>
+          </script>
+          <a class='twitter-share-button' data-text='Wrist | A bi-weekly illustrative exercise by @mattsjohnston in making new and old watches come to life' data-url='http://www.wrist.im' data-via='wristfeed' href='https://twitter.com/share'>Tweet</a>
+          <script type='text/javascript'>
+            //<![CDATA[
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            //]]>
+          </script>
+        </div>
+      </div>
+    </footer>
+    <!-- Included JS Files (Uncompressed) -->
+    <script src="{% static '/js/vendor/jquery-1.10.2.js' %}"></script>
+    <script src="{% static '/js/vendor/jquery.svg.js' %}"></script>
+    <script src="{% static '/js/vendor/jquery.svgdom.js' %}"></script>
+    <script src="{% static '/js/vendor/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static '/js/vendor/foundation/foundation.js' %}"></script>
+    <script src="{% static '/js/vendor/foundation/foundation.tooltips.js' %}"></script>
+    <script src="{% static '/js/vendor/animatescroll.noeasing.js' %}"></script>
+    <script src="{% static '/js/vendor/jquery.visible.js' %}"></script>
+    <script src="{% static '/js/application.js' %}"></script>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700' rel='stylesheet' type='text/css' />
+
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  </body>
+</html>
