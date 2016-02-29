@@ -1,4 +1,5 @@
 (function($) {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
   var Clocker, defer;
   Clocker = (function() {
     function Clocker(elements, options) {
